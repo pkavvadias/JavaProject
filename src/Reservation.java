@@ -10,7 +10,7 @@ public class Reservation{
     Room room;
 
     //protected Object room=new Room();
-    private static AtomicInteger id = new AtomicInteger(100);
+    private static AtomicInteger id = new AtomicInteger();
 
     public Reservation()
     {

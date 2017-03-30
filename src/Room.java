@@ -10,7 +10,7 @@ public class Room {
     Room currentRoom=new Room();
     boolean a;//Used for addReservation method
     double cost=0;//Used for costCalculate method;
-    static AtomicInteger Roomid = new AtomicInteger(100);
+    static AtomicInteger Roomid = new AtomicInteger();
     //Reservation res=new Reservation();
     public Room() {
         RoomNumber = Roomid.incrementAndGet();
@@ -64,6 +64,20 @@ public class Room {
         }
         }
         return cost;
+    }
+    protected boolean cancel(int ReservationId)
+    {
+        for(int i=ReservationId;ReservationId==res.ReservationNumber;i++)
+        {
+         for(int j=0;Availability[j]==Availability[30];j++)
+         {
+             if(Availability[i]!=null)
+             {
+                 Availability[i]=null;
+             }
+         }
+        }
+        return true;
     }
 }
 
