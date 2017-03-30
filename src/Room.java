@@ -1,17 +1,17 @@
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Room {
-    protected int RoomNumber;
-    protected int MaxCapacity;
-    protected double PricePerPerson;
-    protected Object Availability[] = new Reservation[30];
+    int RoomNumber;
+    int MaxCapacity;
+    double PricePerPerson;
+    Reservation Availability[] = new Reservation[30];
     //protected Object res=new Reservation();
-    //Reservation res;
-    protected Room currentRoom=new Room();
-    protected boolean a;//Used for addReservation method
-    protected double cost=0;//Used for costCalculate method;
-    protected static AtomicInteger Roomid = new AtomicInteger(100);
-    Reservation res=new Reservation();
+    Reservation res;
+    Room currentRoom=new Room();
+    boolean a;//Used for addReservation method
+    double cost=0;//Used for costCalculate method;
+    static AtomicInteger Roomid = new AtomicInteger(100);
+    //Reservation res=new Reservation();
     public Room() {
         RoomNumber = Roomid.incrementAndGet();
        // Reservation res=new Reservation();
@@ -66,5 +66,6 @@ public class Room {
         return cost;
     }
 }
+
 
 

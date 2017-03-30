@@ -2,14 +2,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.*;
 
 public class Reservation{
-    protected String Client;
-    protected int ReservationNumber;
-    protected int Arrival;
-    protected int DaysOfStay;
-    protected int NumberOfPeople;
-    protected Room room;
+    String Client;//Variables need to be package-private
+    int ReservationNumber;
+    int Arrival;
+    int DaysOfStay;
+    int NumberOfPeople;
+    Room room;
+
     //protected Object room=new Room();
-    protected static AtomicInteger id = new AtomicInteger(100);
+    private static AtomicInteger id = new AtomicInteger(100);
 
     public Reservation()
     {
