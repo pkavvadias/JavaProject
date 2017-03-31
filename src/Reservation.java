@@ -18,7 +18,7 @@ public class Reservation{
         ReservationNumber=id.incrementAndGet();
     }
 
-    protected void setRoom(Room r)
+    public void setRoom(Room r)
     {
     room=r;
     }

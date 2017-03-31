@@ -64,7 +64,7 @@ public class Room {
         }
         return cost;
     }
-    protected boolean cancel(int ReservationId)
+    public boolean cancel(int ReservationId)
     {
         for(int i=ReservationId;ReservationId==res.ReservationNumber;i++)
         {
@@ -78,7 +78,7 @@ public class Room {
         }
         return true;
     }
-    protected float occupiedPercentage()
+    public float occupiedPercentage()
     {
         float percentage=0;
         int counter=0;
