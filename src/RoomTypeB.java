@@ -1,7 +1,7 @@
 
 public class RoomTypeB extends RoomTypeA {
-    int discountPerDay;
-    double finalPricePerDay=PricePerDay;
+    int DiscountPerDay;
+    double FinalPricePerDay=PricePerDay;
     double cost=0;
     @Override
     public double costCalculate()
@@ -17,10 +17,10 @@ public class RoomTypeB extends RoomTypeA {
         {
             for(;Availability[i]==Availability[30];)
             {
-                cost+=finalPricePerDay;
-                if(finalPricePerDay>=(0.5*PricePerDay))
+                cost+=FinalPricePerDay;
+                if(FinalPricePerDay>=(0.5*PricePerDay))
                 {
-                    finalPricePerDay=(finalPricePerDay-discountPerDay);
+                    FinalPricePerDay=(FinalPricePerDay-DiscountPerDay);
                 }
             }
         }

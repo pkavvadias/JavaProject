@@ -7,7 +7,7 @@ public class Room {
     Reservation Availability[] = new Reservation[30];
     //protected Object res=new Reservation();
     Reservation res;
-    Room currentRoom=new Room();
+    Room CurrentRoom=new Room();
     //boolean a;//Used for addReservation method
     static AtomicInteger Roomid = new AtomicInteger();
     //Reservation res=new Reservation();
@@ -37,7 +37,7 @@ public class Room {
             else
             {
                 Availability[i]=res;
-                res.setRoom(currentRoom);
+                res.setRoom(CurrentRoom);
                 a=true;
             }
 

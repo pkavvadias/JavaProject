@@ -1,7 +1,7 @@
 
 public class RoomTypeC extends Room {
-    int minimumDays;
-    int minimumPeople;
+    int MinimumDays;
+    int MinimumPeople;
     @Override
     public boolean addReservation(Reservation res)
     {
@@ -9,7 +9,7 @@ public class RoomTypeC extends Room {
         boolean a=true;
         for(int i=res.Arrival;i<(res.Arrival+ res.DaysOfStay);i++)
         {
-            if(Availability[i]!=null ||res.NumberOfPeople>MaxCapacity||res.DaysOfStay<minimumDays||res.NumberOfPeople<minimumPeople)
+            if(Availability[i]!=null ||res.NumberOfPeople>MaxCapacity||res.DaysOfStay<MinimumDays||res.NumberOfPeople<MinimumPeople)
             {
 
                 a=false;
@@ -17,7 +17,7 @@ public class RoomTypeC extends Room {
             else
             {
                 Availability[i]=res;
-                res.setRoom(currentRoom);
+                res.setRoom(CurrentRoom);
                 a=true;
             }
 
