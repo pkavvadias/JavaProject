@@ -9,7 +9,6 @@ public class Room {
     Reservation res;
     Room currentRoom=new Room();
     boolean a;//Used for addReservation method
-    double cost=0;//Used for costCalculate method;
     static AtomicInteger Roomid = new AtomicInteger();
     //Reservation res=new Reservation();
     public Room() {
@@ -28,7 +27,7 @@ public class Room {
    {
         //boolean a,b;
        // boolean b;
-        for(int i=res.Arrival;i<(res.Arrival+ res.DaysOfStay);i++)
+       for(int i=res.Arrival;i<(res.Arrival+ res.DaysOfStay);i++)
         {
             if(Availability[i]!=null ||res.NumberOfPeople>MaxCapacity)
             {
@@ -47,7 +46,7 @@ public class Room {
     }
     public double costCalculate()
     {
-
+        double cost=0;
         for(int i=0;i<31;i++)
         {
         if(Availability[i]==null)
@@ -78,6 +77,20 @@ public class Room {
          }
         }
         return true;
+    }
+    protected float occupiedPercentage()
+    {
+        float percentage=0;
+        int counter=0;
+        for(int k=0;Availability[k]==Availability[30];k++)
+        {
+            while(Availability[k]!=null)
+            {
+                counter+=1;
+                percentage=(counter/30)*100;
+            }
+        }
+        return percentage;
     }
 }
 
