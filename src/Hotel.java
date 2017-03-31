@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.*;
 
 public class Hotel {
     String HotelName;
@@ -11,7 +12,8 @@ public class Hotel {
 
     public Room retrieveFromNumber(int id) {
         Room c = new Room();
-        for (int i = 0; i==rooms.size(); i++) { //For statement doesnt loop warning.Possible bug to check
+        Iterator it=rooms.iterator();
+        for (int i = -0; it.hasNext(); i++) { //For statement doesnt loop warning.Possible bug to check
             c = rooms.get(i);
             if (c.RoomNumber == id) {
                 return c;
