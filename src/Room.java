@@ -8,7 +8,7 @@ public class Room {
     //protected Object res=new Reservation();
     Reservation res;
     Room currentRoom=new Room();
-    boolean a;//Used for addReservation method
+    //boolean a;//Used for addReservation method
     static AtomicInteger Roomid = new AtomicInteger();
     //Reservation res=new Reservation();
     public Room() {
@@ -26,7 +26,7 @@ public class Room {
     public boolean addReservation(Reservation res)
    {
         //boolean a,b;
-       // boolean b;
+       boolean a=true;
        for(int i=res.Arrival;i<(res.Arrival+ res.DaysOfStay);i++)
         {
             if(Availability[i]!=null ||res.NumberOfPeople>MaxCapacity)

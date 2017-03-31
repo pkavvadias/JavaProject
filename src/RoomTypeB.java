@@ -3,6 +3,7 @@ public class RoomTypeB extends RoomTypeA {
     int discountPerDay;
     double finalPricePerDay=PricePerDay;
     double cost=0;
+    @Override
     public double costCalculate()
     {
     for(int i=0;i<31;i++)
