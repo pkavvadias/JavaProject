@@ -16,7 +16,7 @@ double cost=0;
         {
             for(;Availability[i]==Availability[30];)
             {
-                cost+=(PricePerDay*PricePerPerson);
+                cost+=PricePerDay;
             }
         }
     }
