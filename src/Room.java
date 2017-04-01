@@ -9,7 +9,11 @@ public class Room {
     Reservation res;
     Room CurrentRoom=new Room();
     //boolean a;//Used for addReservation method
-    static AtomicInteger Roomid = new AtomicInteger();
+    /**
+     * Required to set AtomicInteger's initial value to 1 cause initialvalue=0 a problem would arise
+     * in addReservationToFirstRoom method of class Hotel if there was a room with RoomNumber=0
+     */
+    static AtomicInteger Roomid = new AtomicInteger(1);
     //Reservation res=new Reservation();
     public Room() {
         RoomNumber = Roomid.incrementAndGet();
