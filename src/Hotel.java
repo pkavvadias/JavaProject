@@ -9,13 +9,13 @@ public class Hotel {
         rooms.add(r);
     }
 
-    public Room retrieveRoomFromNumber(int id) {
+    public Room retrieveRoomFromNumber(int roomid) {
         Room c;
         Room a=new Room();
         Iterator it=rooms.iterator();
         for (int i = 0; it.hasNext(); i++) {
             c = rooms.get(i);
-            if (c.RoomNumber == id) {
+            if (c.RoomNumber == roomid) {
                 a=c;
             } else {
                 a = null;
@@ -24,14 +24,14 @@ public class Hotel {
         }
         return a;
     }
-    public Reservation retrieveResevationFromNumber(int id)
+    public Reservation retrieveResevationFromNumber(int resid)
     {
         Reservation r;
         Reservation d=new Reservation();
         Iterator itr=reservations.iterator();
-        for (int i = 0; itr.hasNext(); i++) { 
+        for (int i = 0; itr.hasNext(); i++) {
             r = reservations.get(i);
-            if (r.ReservationNumber == id) {
+            if (r.ReservationNumber == resid) {
                 d=r;
             } else {
                 d=null;
