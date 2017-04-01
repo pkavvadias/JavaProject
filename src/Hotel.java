@@ -40,4 +40,21 @@ public class Hotel {
         }
         return d;
     }
+    public boolean addReservationToRoom(Reservation r,int rnumb)
+    {
+        Room roomfound;
+        if(retrieveRoomFromNumber(rnumb)==null){
+            //The next line will have to be changed if/when i create a Swing GUI
+            System.out.println("Room not found so reservation was not added");
+            return false;
+        }
+        else
+        {
+            roomfound=retrieveRoomFromNumber(rnumb);
+            roomfound.addReservation(r);
+            //The next line will have to be changed if/when i create a Swing GUI
+            System.out.println("Reservation added successfully to room with id "+rnumb+ "");
+            return true;
+        }
+    }
 }
