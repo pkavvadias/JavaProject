@@ -89,4 +89,23 @@ public class Hotel {
             return a;
         }
     }
+    public void cancelReservation(int reservationid)
+    {
+        boolean cancel;
+        Room rremove;
+        Reservation retrieved;
+        retrieved=retrieveResevationFromNumber(reservationid);
+        rremove=retrieved.room;
+        cancel=rremove.cancel(reservationid);
+        if(cancel){
+        reservations.remove(retrieved);
+            //The next line will have to be changed if/when i create a Swing GUI
+        System.out.println("Reservation with reservation id " +reservationid+ " was cancelled");
+        }
+        else
+        {
+            //The next line will have to be changed if/when i create a Swing GUI
+            System.out.println("Reservation with reservation id " +reservationid+ " was not cancelled");
+        }
+    }
 }
