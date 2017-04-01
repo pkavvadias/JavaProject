@@ -3,8 +3,8 @@ import java.util.*;
 
 public class Hotel {
     String HotelName;
-    ArrayList<Room> rooms = new ArrayList<Room>();
-    ArrayList<Reservation> reservations = new ArrayList<Reservation>();
+    ArrayList<Room> rooms = new ArrayList<>();
+    ArrayList<Reservation> reservations = new ArrayList<>();
     public void addRoom(Room r) {
         rooms.add(r);
     }
