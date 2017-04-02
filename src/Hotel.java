@@ -2,8 +2,10 @@ import java.util.ArrayList;
 import java.util.*;
 
 public class Hotel {
+
     String HotelName;
     ArrayList<Room> rooms = new ArrayList<>();
+    //Room[] roomarray = rooms.toArray(new Room[rooms.size()]);
     ArrayList<Reservation> reservations = new ArrayList<>();
     public void addRoom(Room r) {
         rooms.add(r);
@@ -11,10 +13,11 @@ public class Hotel {
 
     public Room retrieveRoomFromNumber(int roomid) {
         Room c;
-        Room a=new Room();
+        Room a=null;
         Iterator it=rooms.iterator();
-        for (int i = 0; it.hasNext(); i++) {
+        for (int i = 0; i<rooms.size(); i++) {
             c = rooms.get(i);
+            //c=roomarray[i];
             if (c.RoomNumber == roomid) {
                 a=c;
             } else {
@@ -61,8 +64,8 @@ public class Hotel {
     public int addReservationToFirstRoom(Reservation reserv) {
         int a=0;
         Room[] roomarray = rooms.toArray(new Room[rooms.size()]);
-        for (int i = 0; i == roomarray.length; i++) {
-            for (int k = reserv.Arrival; k == (reserv.Arrival+reserv.DaysOfStay); k++) {
+        for (int i = 0; i<roomarray.length; i++) {
+            for (int k = reserv.Arrival; k < (reserv.Arrival+reserv.DaysOfStay); k++) {
 
 
                 if (roomarray[i].Availability[k] != null) {//Checks if room i is available the reservation dates

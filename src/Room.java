@@ -5,7 +5,6 @@ public class Room {
     int MaxCapacity;
     double PricePerPerson;
     Reservation Availability[] = new Reservation[30];
-
     //protected Object res=new Reservation();
     Reservation res;
 
@@ -19,7 +18,7 @@ public class Room {
     //Reservation res=new Reservation();
     public Room()
     {
-        RoomNumber = Roomid.incrementAndGet();
+        RoomNumber = Roomid.getAndIncrement();
         // Reservation res=new Reservation();
     //}
    // public void setAvailability(Reservation res)
