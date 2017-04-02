@@ -24,7 +24,7 @@ public class Hotel {
         }
         return a;
     }
-    public Reservation retrieveResevationFromNumber(int resid)
+    public Reservation retrieveReservationFromNumber(int resid)
     {
         Reservation r;
         Reservation d=new Reservation();
@@ -94,7 +94,7 @@ public class Hotel {
         boolean cancel;
         Room rremove;
         Reservation retrieved;
-        retrieved=retrieveResevationFromNumber(reservationid);
+        retrieved=retrieveReservationFromNumber(reservationid);
         rremove=retrieved.room;
         cancel=rremove.cancel(reservationid);
         if(cancel){
@@ -125,5 +125,26 @@ public class Hotel {
             income+=roomcostarray[i].costCalculate();
         }
         return income;
+    }
+    /**
+     * The print/println code of method reservationPlan will be changed if/when i add a Swing GUI
+     */
+    public void reservationPlan()
+    {
+        Room[] roomavailable=rooms.toArray(new Room[rooms.size()]);
+        System.out.print("Room");
+        for(int i=1;i<31;i++){System.out.print(" " + i + " ");}//Prints days
+        System.out.println();
+        for(int j=0;j==roomavailable.length;j++)
+        {
+            System.out.print(" " + roomavailable[j].RoomNumber + " ");//Prints room number f all available rooms
+            for(int k=0;roomavailable[j].Availability[k]==roomavailable[j].Availability[30];k++)
+            {//Checks availability array and prints from it
+                if(roomavailable[j].Availability[k]==null){System.out.print(" _ ");}
+                else{System.out.print(" * ");}
+            }
+            System.out.println();//Changes line after printing each room's availability plan
+        }
+
     }
 }
