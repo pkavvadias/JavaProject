@@ -108,4 +108,12 @@ public class Hotel {
             System.out.println("Reservation with reservation id " +reservationid+ " was not cancelled");
         }
     }
+    public double incomeCalculate(int roomnumb)
+    {
+        Room r;
+        double earnings;
+        r=retrieveRoomFromNumber(roomnumb);
+        earnings=r.costCalculate();
+        return earnings;
+    }
 }
