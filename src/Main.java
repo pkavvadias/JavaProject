@@ -5,7 +5,8 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
         Hotel hotel = new Hotel();
-        Random random = new Random(); // just create one and keep it around
+        Random random = new Random();
+        int userinput;//Will be used for scanner
         //First names taken from wikipedia's list of most common names in Greece
         String firstNames []={"George","Giannis","Konstantinos","Kostas","Dimitris","Nikos","Panagiotis","Vasilis",
         "Christos","Thanasis","Michalis","Maria","Eleni","Vasiliki","Sofia","Aggeliki","Dimitra","Kwstantina"};
@@ -52,7 +53,7 @@ public class Main {
             room5.MinimumPeople = 5;
             room5.MaxCapacity = 6;
             room5.PricePerPerson = 20;
-            hotel.rooms.add(room5);
+            hotel.addRoom(room5);
         }
         //Block for sixth room
         {
@@ -60,21 +61,21 @@ public class Main {
             room6.numberOfChildrenBeds=2;
             room6.PricePerPerson=14;
             room6.MaxCapacity=5;
-            hotel.rooms.add(room6);
+            hotel.addRoom(room6);
         }
         //Block for seventh room
         {
             Room room7=new Room();
             room7.PricePerPerson=19;
             room7.MaxCapacity=4;
-            hotel.rooms.add(room7);
+            hotel.addRoom(room7);
         }
         //Block for eighth room
         {
             Room room8=new Room();
             room8.PricePerPerson=8;
             room8.MaxCapacity=2;
-            hotel.rooms.add(room8);
+            hotel.addRoom(room8);
         }
         //Block for ninth room
         {
@@ -82,7 +83,7 @@ public class Main {
             room9.PricePerDay=30;
             room9.PricePerPerson=15;
             room9.MaxCapacity=2;
-            hotel.rooms.add(room9);
+            hotel.addRoom(room9);
         }
         //Block for tenth room
         {
@@ -91,7 +92,7 @@ public class Main {
             room10.PricePerPerson=10;
             room10.PricePerDay=30;
             room10.MaxCapacity=3;
-            hotel.rooms.add(room10);
+            hotel.addRoom(room10);
         }
         for(int i=0;;i++)
         {
@@ -104,8 +105,10 @@ public class Main {
         //Maximum number of people is 6 as no room supports more than 6
         hotel.addReservationToFirstRoom(reservation);
         hotel.reservations.add(reservation);
+
         //The following code will have to be changed if/when i add a swing guif
-        System.out.println("Press 1 for next repeat(programm continues");
+
+        System.out.println("Press 1 for next repeat(program continues");
         System.out.println("Press 2 to add a reservation");
         System.out.println("Press 3 to cancel a reservation");
         System.out.println("Press 4 to view reservations");
@@ -113,6 +116,9 @@ public class Main {
         System.out.println("Press 6 to view reservation plan");
         System.out.println("Press 7 to view income");
         System.out.println("Press any other key to exit");
+        Scanner s=new Scanner(System.in);
+        userinput=s.nextInt();
+          
 
         }
     }

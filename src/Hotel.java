@@ -62,7 +62,7 @@ public class Hotel {
         int a=0;
         Room[] roomarray = rooms.toArray(new Room[rooms.size()]);
         for (int i = 0; i == roomarray.length; i++) {
-            for (int k = reserv.Arrival; k == reserv.DaysOfStay; k++) {
+            for (int k = reserv.Arrival; k == (reserv.Arrival+reserv.DaysOfStay); k++) {
 
 
                 if (roomarray[i].Availability[k] != null) {//Checks if room i is available the reservation dates
