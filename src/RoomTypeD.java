@@ -1,6 +1,6 @@
 
 public class RoomTypeD extends Room {
-    int numberOfChildren;//Children pay half the price per person
+    int numberOfChildrenBeds;//Children under 3 years pld have special beds and pay half the price per person
     @Override
     public double costCalculate()
     {
@@ -16,7 +16,7 @@ public class RoomTypeD extends Room {
             {
                 for(;Availability[i]==Availability[30];)
                 {
-                    cost+=((res.NumberOfPeople-numberOfChildren)*PricePerPerson)+(numberOfChildren)*(0.5*PricePerPerson);
+                    cost+=((res.NumberOfPeople-numberOfChildrenBeds)*PricePerPerson)+(numberOfChildrenBeds)*(0.5*PricePerPerson);
                 }
             }
         }

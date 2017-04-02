@@ -15,9 +15,10 @@ public class Room {
      */
     static AtomicInteger Roomid = new AtomicInteger(1);
     //Reservation res=new Reservation();
-    public Room() {
+    public Room()
+    {
         RoomNumber = Roomid.incrementAndGet();
-       // Reservation res=new Reservation();
+        // Reservation res=new Reservation();
     //}
    // public void setAvailability(Reservation res)
    // {
