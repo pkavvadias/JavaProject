@@ -5,9 +5,11 @@ public class Room {
     int MaxCapacity;
     double PricePerPerson;
     Reservation Availability[] = new Reservation[30];
+
     //protected Object res=new Reservation();
     Reservation res;
-    Room CurrentRoom=new Room();
+
+   // Room CurrentRoom=new Room();
     //boolean a;//Used for addReservation method
     /**
      * Required to set AtomicInteger's initial value to 1 cause initialvalue=0 a problem would arise
@@ -22,10 +24,12 @@ public class Room {
     //}
    // public void setAvailability(Reservation res)
    // {
-        for(int i=res.Arrival;i<(res.Arrival+res.DaysOfStay);i++)
+      /** This is propably a leftover from an experiment.If everything works ok will be deleted in final version
+       * for(int i=res.Arrival;i<(res.Arrival+res.DaysOfStay);i++)
         {
             Availability[i]=res;
         }
+       */
 
     }
     public boolean addReservation(Reservation res)
@@ -42,7 +46,7 @@ public class Room {
             else
             {
                 Availability[i]=res;
-                res.setRoom(CurrentRoom);
+               res.setRoom(this);
                 a=true;
             }
 

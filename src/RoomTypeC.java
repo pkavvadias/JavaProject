@@ -17,7 +17,7 @@ public class RoomTypeC extends Room {
             else
             {
                 Availability[i]=res;
-                res.setRoom(CurrentRoom);
+                res.setRoom(this);
                 a=true;
             }
 
