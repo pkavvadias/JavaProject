@@ -2,8 +2,16 @@ import java.util.Scanner;
 import java.util.Random;
 
 
+
 public class Main {
+
     public static void main(String[] args) {
+        String clientName;
+        int number;
+        int arrivalDay;
+        int daysToStay;
+        int roomiddecider;
+        int roomid;
         Hotel hotel = new Hotel();
         hotel.HotelName="Hotel";
         Random random = new Random();
@@ -17,86 +25,86 @@ public class Main {
 
 
         //Block for first room
-       // {
+       {
             Room room1 = new Room();
             room1.PricePerPerson = 20;
             room1.MaxCapacity = 4;
             //room1.RoomNumber=2;
             hotel.rooms.add(room1);
 
-        //}
+        }
         //Block for second room
-        //{
+        {
             Room room2 = new Room();
             room2.PricePerPerson = 15;
             room2.MaxCapacity = 2;
             hotel.rooms.add(room2);
-        //}
+        }
         //Block for third room
-       // {
+       {
             RoomTypeA room3 = new RoomTypeA();
             room3.PricePerDay = 10;
             room3.PricePerPerson = 5;
             room3.MaxCapacity = 2;
             hotel.rooms.add(room3);
-        //}
+        }
         //Block for forth room
-       // {
+       {
             RoomTypeB room4 = new RoomTypeB();
             room4.DiscountPerDay = 5;
             room4.PricePerDay = 15;
             room4.PricePerPerson = 25;
             room4.MaxCapacity = 4;
             hotel.rooms.add(room4);
-        //}
+        }
         //Block for fifth room
-        //{
+        {
             RoomTypeC room5 = new RoomTypeC();
             room5.MinimumDays = 4;
             room5.MinimumPeople = 5;
             room5.MaxCapacity = 6;
             room5.PricePerPerson = 20;
             hotel.addRoom(room5);
-        //}
+        }
         //Block for sixth room
-       // {
+       {
             RoomTypeD room6 = new RoomTypeD();
             room6.numberOfChildrenBeds=2;
             room6.PricePerPerson=14;
             room6.MaxCapacity=5;
             hotel.addRoom(room6);
-       // }
+       }
         //Block for seventh room
-        //{
+        {
             Room room7=new Room();
             room7.PricePerPerson=19;
             room7.MaxCapacity=4;
             hotel.addRoom(room7);
-        //}
+        }
         //Block for eighth room
-       // {
+        {
             Room room8=new Room();
             room8.PricePerPerson=8;
             room8.MaxCapacity=2;
             hotel.addRoom(room8);
-       // }
+       }
         //Block for ninth room
-       // {
+        {
             RoomTypeA room9=new RoomTypeA();
             room9.PricePerDay=30;
             room9.PricePerPerson=15;
             room9.MaxCapacity=2;
             hotel.addRoom(room9);
-        //}
+        }
         //Block for tenth room
-        //{
+        {
             RoomTypeB room10=new RoomTypeB();
             room10.DiscountPerDay=3;
             room10.PricePerPerson=10;
             room10.PricePerDay=30;
             room10.MaxCapacity=3;
             hotel.addRoom(room10);
-        //}
+        }
         for(int i=0;;i++)
         {
         String fullName=firstNames[random.nextInt(firstNames.length)] + " " + lastNames[random.nextInt(lastNames.length)];
@@ -105,8 +113,8 @@ public class Main {
         reservation.Arrival=random.nextInt(30);//Sets random values
         reservation.DaysOfStay=random.nextInt((30-reservation.Arrival));
         //App supports only one month so if if DaysofStay+Arrival>30 a crash will occur
-        reservation.NumberOfPeople=random.nextInt(6-1)+1;
-        //Maximum number of people is 6 as no room supports more than 6
+        reservation.NumberOfPeople=random.nextInt(6);
+        //Maximum preset number of people is 6
             //reservation.Arrival=5;
             //reservation.NumberOfPeople=2;
             //reservation.DaysOfStay=3;
@@ -123,15 +131,47 @@ public class Main {
         System.out.println("Press 5 to view rooms");
         System.out.println("Press 6 to view reservation plan");
         System.out.println("Press 7 to view income");
-        System.out.println("Press any other key to exit");
+        System.out.println("Press any other number to exit");
         Scanner s=new Scanner(System.in);
         userinput=s.nextInt();
             switch(userinput){
-                case 1:System.out.println("days of stay "+reservation.DaysOfStay+ " arrival " +reservation.Arrival+" number " +reservation.NumberOfPeople);
+                case 1:
+                    //System.out.println("days of stay "+reservation.DaysOfStay+ " arrival " +reservation.Arrival+" number " +reservation.NumberOfPeople);
+                    continue;
+                case 2:
+                    Reservation newres=new Reservation();
+                    System.out.println("Insert name");
+                    Scanner scan=new Scanner(System.in);
+                    clientName=scan.nextLine();
+                    System.out.println("Insert arrival day");
+                    arrivalDay=scan.nextInt();
+                    System.out.println("Insert days of stay");
+                    daysToStay=scan.nextInt();
+                    System.out.println("Insert number of people");
+                    number=scan.nextInt();
+                    System.out.println("Press 1 if you want to enter specific room id or press any other number to automatically assign it ");
+                    roomiddecider=scan.nextInt();
+                    if(roomiddecider==1)
+                    {
+                        System.out.println("Insert room id");
+                        roomid=scan.nextInt();
+                    }
+                    else{roomid=-1;}
+                    newres.Arrival=arrivalDay;
+                    newres.DaysOfStay=daysToStay;
+                    newres.Client=clientName;
+                    newres.NumberOfPeople=number;
+                    if(roomid!=-1)
+                    {
+                        hotel.addReservationToRoom(newres,roomid);
+                    }
+                    else{hotel.addReservationToFirstRoom(newres);}
+
                     continue;
                 default:break;
 
             }
+            if(userinput==7){break;}
 
         }
     }
