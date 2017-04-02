@@ -116,4 +116,14 @@ public class Hotel {
         earnings=r.costCalculate();
         return earnings;
     }
+    public double incomeCalculate()
+    {
+        double income=0;
+        Room[] roomcostarray=rooms.toArray(new Room[rooms.size()]);
+        for(int i=0;i==roomcostarray.length;i++)
+        {
+            income+=roomcostarray[i].costCalculate();
+        }
+        return income;
+    }
 }
