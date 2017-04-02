@@ -105,8 +105,8 @@ public class Main {
             room10.MaxCapacity=3;
             hotel.addRoom(room10);
         }
-        for(int i=0;;i++)
-        {
+        //for(int i=0;;i++)
+        //{
         String fullName=firstNames[random.nextInt(firstNames.length)] + " " + lastNames[random.nextInt(lastNames.length)];
         Reservation reservation=new Reservation();
         reservation.Client=fullName;
@@ -122,8 +122,9 @@ public class Main {
             //hotel.addReservationToRoom(reservation,2);
         hotel.reservations.add(reservation);
 
-        //The following code will have to be changed if/when i add a swing guif
-
+        //The following code will have to be changed if/when i add a swing gui
+        for(int i=0;;i++)
+        {
         System.out.println("Press 1 for next repeat(program continues)");
         System.out.println("Press 2 to add a reservation");
         System.out.println("Press 3 to cancel a reservation");
@@ -134,6 +135,7 @@ public class Main {
         System.out.println("Press any other number to exit");
         Scanner s=new Scanner(System.in);
         userinput=s.nextInt();
+        if(userinput<1||userinput>7){userinput=8;}
             switch(userinput){
                 case 1:
                     //System.out.println("days of stay "+reservation.DaysOfStay+ " arrival " +reservation.Arrival+" number " +reservation.NumberOfPeople);
@@ -167,13 +169,14 @@ public class Main {
                     }
                     else{hotel.addReservationToFirstRoom(newres);}
 
-                    continue;
-                default:break;
+
+                default:
+                    break;
 
             }
-            if(userinput==7){break;}
-
+            if(userinput==8){break;}
+            }
         }
-    }
 }
+
 
