@@ -14,19 +14,17 @@ public class Hotel {
     }
 
     public Room retrieveRoomFromNumber(int roomid) {
-        Room c;
-        Room a=null;
-        for (int i = 0; i<rooms.size(); i++) {
-            c = rooms.get(i);
-            //c=roomarray[i];
-            if (c.RoomNumber == roomid) {
-                a=c;
-            } else {
-                a = null;
-            }
+        Room c=null;
+             for(Room rg:rooms){
+            if(rg.RoomNumber==roomid)
+            {c= rg;break;}
+            else {
 
+                c=null;
+            }
         }
-        return a;
+
+       return c;
     }
     public Reservation retrieveReservationFromNumber(int resid)
     {
@@ -39,7 +37,7 @@ public class Hotel {
                 k=i;
 
             } else{
-                restoappear[1]=null;
+                restoappear[0]=null;
             }
 
         }
@@ -113,9 +111,18 @@ public class Hotel {
             if (retrieveReservationFromNumber(reservationid) != null)
 
             {
-                //System.out.println(""+retrieveReservationFromNumber(reservationid));//.room);
-                //reservations.remove(retrieveReservationFromNumber(reservationid));
-                reservations.remove(reservationid);
+
+                Iterator itr=reservations.iterator();
+
+                //Iterators are safer to use
+                    while(itr.hasNext()) {
+                        Object r = itr.next();
+                        if (r.equals(retrieveReservationFromNumber(reservationid))) {
+                            itr.remove();
+                        }
+                    }
+                //}*/
+                //else{reservations.remove(reservationid);}
                 //The next line will have to be changed if/when i create a Swing GUI
                 System.out.println("Reservation with reservation id " + reservationid + " was cancelled");
             } else {
@@ -127,10 +134,11 @@ public class Hotel {
     }
     public double incomeCalculate(int roomnumb)
     {
-        Room r;
+        //Room r;
         double earnings;
-        r=retrieveRoomFromNumber(roomnumb);
-        earnings=r.costCalculate();
+        //r=retrieveRoomFromNumber(roomnumb);
+        //System.out.println("" +retrieveRoomFromNumber(roomnumb)); This was used for debugging
+        earnings=retrieveRoomFromNumber(roomnumb).costCalculate();
         return earnings;
     }
     public double incomeCalculate()

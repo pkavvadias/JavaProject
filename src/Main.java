@@ -206,8 +206,28 @@ public class Main {
                             }
 
                        break;
-                    case 6:hotel.reservationPlan();
-                    break;
+                    case 7:
+
+                        int roomind;
+                        System.out.println("Press 1 if you want to search inclome of specific room or an other number to find total income");
+                        roomind=s.nextInt();
+
+                                if(roomind==1)
+                                {
+                                    int roomnumb;
+                                    System.out.println("Enter room number");
+                                    roomnumb=s.nextInt();
+                                    try {
+                                        System.out.println("Income is " + hotel.incomeCalculate(roomnumb) + " euros");
+                                    }catch(NullPointerException e){System.out.println("Room with id " +roomnumb+ " does not exist");}
+                                }
+                                else {
+                                    System.out.print("ID \t Fullness \t Earnings \t");
+                                    for (Room r : hotel.rooms) {
+                                        System.out.print("" + r.RoomNumber + "\t" + r.occupiedPercentage() + "\t" + hotel.incomeCalculate() + "\n");
+                                    }
+                                }
+                        break;
 
                     default:
                         break;

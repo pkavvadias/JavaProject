@@ -59,7 +59,7 @@ public class Room {
     public double costCalculate()
     {
         double cost=0;
-        for(int i=0;i<31;i++)
+        for(int i=0;i<30;i++)
         {
         if(Availability[i]==null)
         {
@@ -100,7 +100,7 @@ public class Room {
     {
         float percentage=0;
         int counter=0;
-        for(int k=0;Availability[k]==Availability[30];k++)
+        for(int k=0;Availability[k]==Availability[29];k++)
         {
             while(Availability[k]!=null)
             {
