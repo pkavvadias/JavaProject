@@ -106,6 +106,7 @@ public class Main {
             hotel.addRoom(room10);
         }
         int k=0;
+        int random_cancel;
         for (int i = 0; ; i++) {
             while(k==0) {
                 String fullName = firstNames[random.nextInt(firstNames.length)] + " " + lastNames[random.nextInt(lastNames.length)];
@@ -115,13 +116,28 @@ public class Main {
                 reservation.DaysOfStay = random.nextInt((30 - reservation.Arrival));
                 //App supports only one month so if if DaysofStay+Arrival>30 a crash will occur
                 reservation.NumberOfPeople = random.nextInt(6);
-                //Maximum preset number of people is 6
-                //reservation.Arrival=5;
-                //reservation.NumberOfPeople=2;
-                //reservation.DaysOfStay=3;
                 hotel.addReservationToFirstRoom(reservation);
                 //hotel.addReservationToRoom(reservation,2);
                 hotel.reservations.add(reservation);
+                random_cancel=random.nextInt(4);//Gives a random number between 0 and 3
+                /**
+                 * The try-catch block ad the if statement in the next while loop is a workaround
+                 * Because of static method atomic integer in reservation class each reservation gets a unique id
+                 * Even if eventually that reservation object is not saved not other Reservation object get same ID
+                 * If by luck the while loop tried to delete a Reservation with that id(essentially a non existent reservation)
+                 *a crash will occur.So we prevent that by ordering to delete the reservation with next ID
+                 */
+                while(random_cancel==2)
+                {
+                    int resget=random.nextInt(hotel.reservations.size());
+                    try {
+                        if (hotel.retrieveReservationFromNumber(resget).room == null) {
+                            resget += 1;
+                        }
+                    }catch(NullPointerException e){resget+=1;}
+                    hotel.cancelReservation(resget);
+                    break;//hotel.reservations.get(resget);
+                }
                 k=1;
             }
 
@@ -188,10 +204,6 @@ public class Main {
 
                                 }
                             }
-
-                        //}catch(NullPointerException e){
-                          // System.out.println("This reservation has not been saved");
-                            //continue;}
 
                        break;
                     case 6:hotel.reservationPlan();

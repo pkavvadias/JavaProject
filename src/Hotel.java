@@ -114,7 +114,8 @@ public class Hotel {
 
             {
                 //System.out.println(""+retrieveReservationFromNumber(reservationid));//.room);
-                reservations.remove(retrieveReservationFromNumber(reservationid));
+                //reservations.remove(retrieveReservationFromNumber(reservationid));
+                reservations.remove(reservationid);
                 //The next line will have to be changed if/when i create a Swing GUI
                 System.out.println("Reservation with reservation id " + reservationid + " was cancelled");
             } else {
