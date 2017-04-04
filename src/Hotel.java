@@ -8,7 +8,7 @@ public class Hotel {
     //Room[] roomarray = rooms.toArray(new Room[rooms.size()]);
     ArrayList<Reservation> reservations = new ArrayList<>();
     //Reservation[] restoappear=new Reservation[reservations.size()];
-   // Reservation[] reservarray=reservations.toArray(new Reservation[reservations.size()]);
+
     public void addRoom(Room r) {
         rooms.add(r);
     }
@@ -79,12 +79,14 @@ public class Hotel {
                 } else {
                     //roomtoadd=retrieveRoomFromNumber(roomarray[i].RoomNumber);
 
-                    reserv.setRoom(retrieveRoomFromNumber(roomarray[i].RoomNumber));
-                    reservations.add(reserv);//Adds reservation to reservation list
+                    //reserv.setRoom(retrieveRoomFromNumber(roomarray[i].RoomNumber));
+                    reserv.setRoom(rooms.get(i));
+                    //reservations.add(reserv);//Adds reservation to reservation list
                     a=roomarray[i].RoomNumber;
                     //for (int l = reserv.Arrival; l < (reserv.Arrival+reserv.DaysOfStay); l++)
                    //{retrieveRoomFromNumber(roomarray[i].RoomNumber).addReservation(reserv);}
-                   roomarray[i].addReservation(reserv);//Adds reservation to the room of the array
+                   roomarray[i].addReservation(reserv);//Adds reservation to the room of the arrayj
+
 
                 }
                 if(a!=0){break;}//Loop needs to stop when an available room is found
@@ -95,6 +97,7 @@ public class Hotel {
         {
             //The next line will have to be changed if/when i create a Swing GUI
             System.out.println("No available room found");
+
                     return a;
         }
         else{

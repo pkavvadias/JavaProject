@@ -144,7 +144,7 @@ public class Main {
                 switch (userinput) {
                     case 1:
                         k=0;//Controls the while statement
-                        continue;
+                        break;
                     case 2:
                         Reservation newres = new Reservation();
                         System.out.println("Insert name");
@@ -172,10 +172,30 @@ public class Main {
                         } else {
                             hotel.addReservationToFirstRoom(newres);
                         }
+                        break;
                     case 3:
                         System.out.println("Insert reservation id to cancel");
                         hotel.cancelReservation(s.nextInt());
                         break;
+                    case 4:
+                        System.out.print("ID \t Client name \t     Room number \n");
+                            for (Reservation r : hotel.reservations) {
+                                //The above if statement is required to avoid exception if no room was available(so reservation not saved)
+                                if(r.room==null){System.out.print("");}
+                                else {
+
+                                    System.out.print("" + r.ReservationNumber + " \t " + r.Client + " \t " + r.room.RoomNumber + "\n");
+
+                                }
+                            }
+
+                        //}catch(NullPointerException e){
+                          // System.out.println("This reservation has not been saved");
+                            //continue;}
+
+                       break;
+                    case 6:hotel.reservationPlan();
+                    break;
 
                     default:
                         break;
