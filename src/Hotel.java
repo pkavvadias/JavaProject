@@ -158,19 +158,30 @@ public class Hotel {
      */
     public void reservationPlan()
     {
-        Room[] roomavailable=rooms.toArray(new Room[rooms.size()]);
-        System.out.print("Room");
-        for(int i=1;i<31;i++){System.out.print(" " + i + " ");}//Prints days
+        //Room[] roomavailable=rooms.toArray(new Room[rooms.size()]);
+        //Room c;
+        System.out.print("Room\t");
+        for(int i=1;i<31;i++){System.out.print(""+ i +"\t");}//Prints days
         System.out.println();
-        for(int j=0;j==rooms.size();j++)
-        {
-            System.out.print(" " + roomavailable[j].RoomNumber + " ");//Prints room number f all available rooms
-            for(int k=0;roomavailable[j].Availability[k]==roomavailable[j].Availability[30];k++)
-            {//Checks availability array and prints from it
-                if(roomavailable[j].Availability[k]==null){System.out.print(" _ ");}
-                else{System.out.print(" * ");}
+        //for(int j=0;j==rooms.size();j++)
+        for(Room roomavailable:rooms) {
+
+                System.out.print(" " + roomavailable.RoomNumber + " \t");//Prints room number of all available rooms
+
+                //for(int k=0;roomavailable.Availability[k]==roomavailable.Availability[29];k++)
+                //for(c.Availability a:roomavailable.Availability)
+                for (int k = 0; k < 30; k++) {//Checks availability array and prints from it
+                    if (roomavailable.Availability[k] == null) {
+                        System.out.print("-\t");
+                    } else {
+                        System.out.print("*\t");
+                    }
+                    //System.out.println();
+
             }
-            System.out.println();//Changes line after printing each room's availability plan
+
+           System.out.println();//Changes line after printing each room's availability plan
+
         }
 
     }

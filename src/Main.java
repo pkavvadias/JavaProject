@@ -217,6 +217,9 @@ public class Main {
                         //Occupied eprcentage doesnt display properly.Must be fixed ASAP
                         break;
                         //occupiedpercentage not displayed properly
+                    case 6:
+                        hotel.reservationPlan();
+                        break;
                     case 7:
 
                         int roomind;
