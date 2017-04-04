@@ -99,12 +99,14 @@ public class Room {
     public float occupiedPercentage()
     {
         float percentage=0;
-        int counter=0;
-        //for(int k=0;Availability[k]==Availability[29];k++)
+        float counter=0;
+        //for(int k=0;Availability[k]==Availability[28];k++)
         for(Reservation s:Availability)
         {
-            while(s!=null)
-            {
+            System.out.println();
+            //while(s!=null)
+            while(Availability!=null)
+            {//System.out.println(s);
                 counter+=1;
                 percentage=(counter/30)*100;
             }

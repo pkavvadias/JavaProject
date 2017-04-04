@@ -206,6 +206,17 @@ public class Main {
                             }
 
                        break;
+                    case 5:
+                        System.out.print("ID \t Fullness \t Income \t\n");
+                        for(Room r:hotel.rooms)
+                        {
+                            System.out.println(""+r.RoomNumber+ " \t " +hotel.incomeCalculate(r.RoomNumber)+ " \t ");
+                            //System.out.println(""+r.occupiedPercentage()+ "");
+
+                        }
+                        //Occupied eprcentage doesnt display properly.Must be fixed ASAP
+                        break;
+                        //occupiedpercentage not displayed properly
                     case 7:
 
                         int roomind;
