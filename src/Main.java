@@ -121,13 +121,13 @@ public class Main {
                 hotel.reservations.add(reservation);
                 random_cancel=random.nextInt(4);//Gives a random number between 0 and 3
                 /**
-                 * The try-catch block ad the if statement in the next while loop is a workaround
+                 * The try-catch block and the two if statements in the next while loop is a workaround
                  * Because of static method atomic integer in reservation class each reservation gets a unique id
                  * Even if eventually that reservation object is not saved not other Reservation object get same ID
                  * If by luck the while loop tried to delete a Reservation with that id(essentially a non existent reservation)
                  *a crash will occur.So we prevent that by ordering to delete the reservation with next ID
                  */
-                while(random_cancel==2)
+                if(random_cancel==2)
                 {
                     int resget=random.nextInt(hotel.reservations.size());
                     try {
