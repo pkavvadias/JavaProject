@@ -6,7 +6,7 @@ public class RoomTypeB extends RoomTypeA {
     @Override
     public double costCalculate()
     {
-    for(int i=0;i<31;i++)
+    for(int i=0;i<30;i++)
     {
         if(Availability[i]==null)
         {

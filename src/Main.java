@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.util.Random;
-
+import java.util.Iterator;
 
 
 public class Main {
@@ -218,15 +218,15 @@ public class Main {
                                     System.out.println("Enter room number");
                                     roomnumb=s.nextInt();
                                     try {
-                                        System.out.println("Income is " + hotel.incomeCalculate(roomnumb) + " euros");
+                                        System.out.println("Income of room with room number " + roomnumb + " is " + hotel.incomeCalculate(roomnumb) + " euros");
                                     }catch(NullPointerException e){System.out.println("Room with id " +roomnumb+ " does not exist");}
                                 }
                                 else {
-                                    System.out.print("ID \t Fullness \t Earnings \t");
-                                    for (Room r : hotel.rooms) {
-                                        System.out.print("" + r.RoomNumber + "\t" + r.occupiedPercentage() + "\t" + hotel.incomeCalculate() + "\n");
+
+                                    System.out.println("Total income is " + hotel.incomeCalculate()+ " ");
+
                                     }
-                                }
+
                         break;
 
                     default:

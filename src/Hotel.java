@@ -83,7 +83,7 @@ public class Hotel {
                     a=roomarray[i].RoomNumber;
                     //for (int l = reserv.Arrival; l < (reserv.Arrival+reserv.DaysOfStay); l++)
                    //{retrieveRoomFromNumber(roomarray[i].RoomNumber).addReservation(reserv);}
-                   roomarray[i].addReservation(reserv);//Adds reservation to the room of the arrayj
+                   roomarray[i].addReservation(reserv);//Adds reservation to the room of the array
 
 
                 }
@@ -144,10 +144,12 @@ public class Hotel {
     public double incomeCalculate()
     {
         double income=0;
-        Room[] roomcostarray=rooms.toArray(new Room[rooms.size()]);
-        for(int i=0;i==roomcostarray.length;i++)
+        //Room[] roomcostarray=rooms.toArray(new Room[rooms.size()]);
+        //for(int i=0;i==rooms.size();i++)
+        for(Room r:rooms)
         {
-            income+=roomcostarray[i].costCalculate();
+            //income+=rooms.get(i).costCalculate();
+            income+=r.costCalculate();
         }
         return income;
     }
@@ -160,7 +162,7 @@ public class Hotel {
         System.out.print("Room");
         for(int i=1;i<31;i++){System.out.print(" " + i + " ");}//Prints days
         System.out.println();
-        for(int j=0;j==roomavailable.length;j++)
+        for(int j=0;j==rooms.size();j++)
         {
             System.out.print(" " + roomavailable[j].RoomNumber + " ");//Prints room number f all available rooms
             for(int k=0;roomavailable[j].Availability[k]==roomavailable[j].Availability[30];k++)

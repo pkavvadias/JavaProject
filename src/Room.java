@@ -100,9 +100,10 @@ public class Room {
     {
         float percentage=0;
         int counter=0;
-        for(int k=0;Availability[k]==Availability[29];k++)
+        //for(int k=0;Availability[k]==Availability[29];k++)
+        for(Reservation s:Availability)
         {
-            while(Availability[k]!=null)
+            while(s!=null)
             {
                 counter+=1;
                 percentage=(counter/30)*100;

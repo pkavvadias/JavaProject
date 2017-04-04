@@ -5,7 +5,7 @@ public class RoomTypeD extends Room {
     public double costCalculate()
     {
         double cost=0;
-        for(int i=0;i<31;i++)
+        for(int i=0;i<30;i++)
         {
             if(Availability[i]==null)
             {
