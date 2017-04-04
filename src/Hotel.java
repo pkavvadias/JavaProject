@@ -7,6 +7,8 @@ public class Hotel {
     ArrayList<Room> rooms = new ArrayList<>();
     //Room[] roomarray = rooms.toArray(new Room[rooms.size()]);
     ArrayList<Reservation> reservations = new ArrayList<>();
+    //Reservation[] restoappear=new Reservation[reservations.size()];
+   // Reservation[] reservarray=reservations.toArray(new Reservation[reservations.size()]);
     public void addRoom(Room r) {
         rooms.add(r);
     }
@@ -14,7 +16,6 @@ public class Hotel {
     public Room retrieveRoomFromNumber(int roomid) {
         Room c;
         Room a=null;
-        Iterator it=rooms.iterator();
         for (int i = 0; i<rooms.size(); i++) {
             c = rooms.get(i);
             //c=roomarray[i];
@@ -29,23 +30,26 @@ public class Hotel {
     }
     public Reservation retrieveReservationFromNumber(int resid)
     {
-        Reservation r;
-        Reservation d=new Reservation();
-        Iterator itr=reservations.iterator();
-        for (int i = 0; itr.hasNext(); i++) {
-            r = reservations.get(i);
-            if (r.ReservationNumber == resid) {
-                d=r;
-            } else {
-                d=null;
+        int k=0;
+        Reservation[] restoappear=new Reservation[reservations.size()];
+       Reservation[] reservarray=reservations.toArray(new Reservation[reservations.size()]);
+        for (int i = 0; i<reservarray.length; i++) {
+            if (reservarray[i].ReservationNumber == resid) {
+                restoappear[i]=reservarray[i];
+                k=i;
+
+            } else{
+                restoappear[1]=null;
             }
 
         }
-        return d;
+        return restoappear[k];
+
     }
     public boolean addReservationToRoom(Reservation r,int rnumb)
     {
-        Room roomfound;
+        //Room[] roomarray = rooms.toArray(new Room[rooms.size()]);
+        //Room roomfound;
         if(retrieveRoomFromNumber(rnumb)==null){
             //The next line will have to be changed if/when i create a Swing GUI
             System.out.println("Room not found so reservation was not added");
@@ -53,16 +57,18 @@ public class Hotel {
         }
         else
         {
-            roomfound=retrieveRoomFromNumber(rnumb);
-            roomfound.addReservation(r);
+
+            r.setRoom(retrieveRoomFromNumber(rnumb));
+            retrieveRoomFromNumber(rnumb).addReservation(r);
             //The next line will have to be changed if/when i create a Swing GUI
-            System.out.println("Reservation added successfully to room with id "+rnumb+ "");
+            System.out.println("Reservation with reservation id " +r.ReservationNumber+ "added successfully to room with id "+rnumb+ "");
             reservations.add(r);
             return true;
         }
     }
     public int addReservationToFirstRoom(Reservation reserv) {
         int a=0;
+        //Room roomtoadd;
         Room[] roomarray = rooms.toArray(new Room[rooms.size()]);
         for (int i = 0; i<roomarray.length; i++) {
             for (int k = reserv.Arrival; k < (reserv.Arrival+reserv.DaysOfStay); k++) {
@@ -71,8 +77,13 @@ public class Hotel {
                 if (roomarray[i].Availability[k] != null) {//Checks if room i is available the reservation dates
                     a = 0;
                 } else {
+                    //roomtoadd=retrieveRoomFromNumber(roomarray[i].RoomNumber);
+
+                    reserv.setRoom(retrieveRoomFromNumber(roomarray[i].RoomNumber));
                     reservations.add(reserv);//Adds reservation to reservation list
                     a=roomarray[i].RoomNumber;
+                    //for (int l = reserv.Arrival; l < (reserv.Arrival+reserv.DaysOfStay); l++)
+                   //{retrieveRoomFromNumber(roomarray[i].RoomNumber).addReservation(reserv);}
                    roomarray[i].addReservation(reserv);//Adds reservation to the room of the array
 
                 }
@@ -88,28 +99,27 @@ public class Hotel {
         }
         else{
             //The next line will have to be changed if/when i create a Swing GUI
-            System.out.println("Reservation added successfully to room with room number" +a+ "");
+            System.out.println("Reservation with reservation id " +reserv.ReservationNumber+ " added successfully to room with room number " +a+ "");
             return a;
         }
     }
     public void cancelReservation(int reservationid)
     {
-        boolean cancel;
-        Room rremove;
-        Reservation retrieved;
-        retrieved=retrieveReservationFromNumber(reservationid);
-        rremove=retrieved.room;
-        cancel=rremove.cancel(reservationid);
-        if(cancel){
-        reservations.remove(retrieved);
-            //The next line will have to be changed if/when i create a Swing GUI
-        System.out.println("Reservation with reservation id " +reservationid+ " was cancelled");
-        }
-        else
-        {
-            //The next line will have to be changed if/when i create a Swing GUI
-            System.out.println("Reservation with reservation id " +reservationid+ " was not cancelled");
-        }
+
+        try {
+            if (retrieveReservationFromNumber(reservationid) != null)
+
+            {
+                //System.out.println(""+retrieveReservationFromNumber(reservationid));//.room);
+                reservations.remove(retrieveReservationFromNumber(reservationid));
+                //The next line will have to be changed if/when i create a Swing GUI
+                System.out.println("Reservation with reservation id " + reservationid + " was cancelled");
+            } else {
+                //The next line will have to be changed if/when i create a Swing GUI
+                System.out.println("Reservation with reservation id " + reservationid + " was not cancelled");
+            }
+        }catch(ArrayIndexOutOfBoundsException e)
+        {System.out.println("Reservation with reservation id " + reservationid + " was not cancelled");}
     }
     public double incomeCalculate(int roomnumb)
     {

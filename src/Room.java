@@ -6,7 +6,7 @@ public class Room {
     double PricePerPerson;
     Reservation Availability[] = new Reservation[30];
     //protected Object res=new Reservation();
-    Reservation res;
+    //Reservation res;
 
    // Room CurrentRoom=new Room();
     //boolean a;//Used for addReservation method
@@ -15,12 +15,15 @@ public class Room {
      * in addReservationToFirstRoom method of class Hotel if there was a room with RoomNumber=0
      */
     static AtomicInteger Roomid = new AtomicInteger(1);
+        //RoomNumber = Roomid.getAndIncrement();
+    //}// = new AtomicInteger(1);
+
     //Reservation res=new Reservation();
     public Room()
     {
-        RoomNumber = Roomid.getAndIncrement();
+       RoomNumber = Roomid.getAndIncrement();
         // Reservation res=new Reservation();
-    //}
+    }
    // public void setAvailability(Reservation res)
    // {
       /** This is propably a leftover from an experiment.If everything works ok will be deleted in final version
@@ -30,7 +33,7 @@ public class Room {
         }
        */
 
-    }
+    //}
     public boolean addReservation(Reservation res)
    {
         //boolean a,b;
@@ -45,6 +48,7 @@ public class Room {
             else
             {
                 Availability[i]=res;
+                Availability[i].ReservationNumber=res.ReservationNumber;
                res.setRoom(this);
                 a=true;
             }
@@ -64,28 +68,34 @@ public class Room {
         }
         else
         {
-            for(;Availability[i]==Availability[30];)
-            {
-                cost+=(res.NumberOfPeople*PricePerPerson);
-            }
+            //for(;Availability[i]==Availability[30];)
+            //{
+                cost+=(Availability[i].NumberOfPeople*PricePerPerson);
+            //}
         }
         }
         return cost;
     }
-    public boolean cancel(int ReservationId)
-    {
-        for(int i=ReservationId;ReservationId==res.ReservationNumber;i++)
-        {
-         for(int j=0;Availability[j]==Availability[30];j++)
-         {
-             if(Availability[i]!=null)
-             {
-                 Availability[i]=null;
-             }
-         }
+
+
+
+        public boolean cancel ( int ReservationId) {
+
+            for (int j = 0; Availability[j] == Availability[29]; j++) {
+                if (Availability[j].ReservationNumber == ReservationId)
+                {
+                    if (Availability[j] != null) {
+                        Availability[j] = null;
+                    }
+                 }
         }
+
         return true;
+
+
     }
+
+
     public float occupiedPercentage()
     {
         float percentage=0;

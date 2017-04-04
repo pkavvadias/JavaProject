@@ -17,6 +17,7 @@ public class RoomTypeC extends Room {
             else
             {
                 Availability[i]=res;
+                Availability[i].ReservationNumber=res.ReservationNumber;
                 res.setRoom(this);
                 a=true;
             }

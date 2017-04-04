@@ -7,16 +7,18 @@ public class Reservation{
     int Arrival;
     int DaysOfStay;
     int NumberOfPeople;
-    Room room;
+    Room room=null;
 
     //protected Object room=new Room();
-    private static AtomicInteger id = new AtomicInteger();
+    static AtomicInteger id=new AtomicInteger(1);
+        //ReservationNumber=id.getAndIncrement();
+    //} //new AtomicInteger();
 
     public Reservation()
     {
-        room=null;
-        ReservationNumber=id.incrementAndGet();
-    }
+
+       ReservationNumber=id.getAndIncrement();
+   }
 
     public void setRoom(Room r)
     {
