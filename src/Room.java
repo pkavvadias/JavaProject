@@ -98,17 +98,26 @@ public class Room {
         float percentage=0;
         float counter=0;
         //for(int k=0;Availability[k]==Availability[28];k++)
-        for(Reservation s:Availability)
+        //for(Reservation s:Availability)
+        for(int i=0;i<Availability.length;i++)
         {
-            System.out.println();
+            //System.out.println();
             //while(s!=null)
-            while(Availability!=null)
-            {//System.out.println(s);
-                counter+=1;
-                percentage=(counter/30)*100;
-            }
+            //while(Availability!=null){
+           // try {
+                //while (Availability[i].ReservationNumber != 0) {//System.out.println(s);
+            if(Availability[i]==null)
+            {//break;
+                i+=1;}
+            else{
+                    counter++;
+
+                }
+            //}catch(NullPointerException e){i++;}
         }
+        percentage=(counter/30)*100;
         return percentage;
+
     }
 }
 

@@ -84,6 +84,7 @@ public class Hotel {
                     //for (int l = reserv.Arrival; l < (reserv.Arrival+reserv.DaysOfStay); l++)
                    //{retrieveRoomFromNumber(roomarray[i].RoomNumber).addReservation(reserv);}
                    roomarray[i].addReservation(reserv);//Adds reservation to the room of the array
+                    retrieveRoomFromNumber(roomarray[i].RoomNumber).addReservation(reserv);//Test for occupiedpercentage
 
 
                 }

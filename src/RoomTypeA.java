@@ -14,10 +14,10 @@ double cost=0;
         }
         else
         {
-            for(;Availability[i]==Availability[30];)
-            {
+           // for(;Availability[i]==Availability[30];)
+           // {
                 cost+=PricePerDay;
-            }
+           // }
         }
     }
     return cost;

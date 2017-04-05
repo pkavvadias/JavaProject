@@ -15,14 +15,14 @@ public class RoomTypeB extends RoomTypeA {
         }
         else
         {
-            for(;Availability[i]==Availability[30];)
-            {
+           // for(;Availability[i]==Availability[30];)
+            //{
                 cost+=FinalPricePerDay;
                 if(FinalPricePerDay>=(0.5*PricePerDay))
                 {
                     FinalPricePerDay=(FinalPricePerDay-DiscountPerDay);
                 }
-            }
+            //}
         }
     }
     return cost;

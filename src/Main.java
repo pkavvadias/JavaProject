@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.Random;
+import java.text.DecimalFormat;
 import java.util.Iterator;
 
 
@@ -208,13 +209,15 @@ public class Main {
                        break;
                     case 5:
                         System.out.print("ID \t Fullness \t Income \t\n");
+                        DecimalFormat df = new DecimalFormat();
+                        df.setMaximumFractionDigits(2);
                         for(Room r:hotel.rooms)
                         {
-                            System.out.println(""+r.RoomNumber+ " \t " +hotel.incomeCalculate(r.RoomNumber)+ " \t ");
+                            System.out.println(""+r.RoomNumber+ " \t " +df.format(r.occupiedPercentage())+ " \t " +hotel.incomeCalculate(r.RoomNumber)+ " \t ");
                             //System.out.println(""+r.occupiedPercentage()+ "");
 
                         }
-                        //Occupied eprcentage doesnt display properly.Must be fixed ASAP
+                        //Occupied still has issues
                         break;
                         //occupiedpercentage not displayed properly
                     case 6:

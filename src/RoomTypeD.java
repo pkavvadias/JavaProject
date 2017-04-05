@@ -14,10 +14,10 @@ public class RoomTypeD extends Room {
             }
             else
             {
-                for(;Availability[i]==Availability[30];)
-                {
+                //for(;Availability[i]==Availability[30];)
+               // {
                     cost+=((Availability[i].NumberOfPeople-numberOfChildrenBeds)*PricePerPerson)+(numberOfChildrenBeds)*(0.5*PricePerPerson);
-                }
+                //}
             }
         }
         return cost;
