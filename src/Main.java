@@ -214,10 +214,8 @@ public class Main {
                         for(Room r:hotel.rooms)
                         {
                             System.out.println(""+r.RoomNumber+ " \t " +df.format(r.occupiedPercentage())+ " \t " +hotel.incomeCalculate(r.RoomNumber)+ " \t ");
-                            //System.out.println(""+r.occupiedPercentage()+ "");
 
                         }
-                        //Occupied still has issues
                         break;
                         //occupiedpercentage not displayed properly
                     case 6:

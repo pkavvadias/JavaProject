@@ -5,9 +5,8 @@ public class Hotel {
 
     String HotelName;
     ArrayList<Room> rooms = new ArrayList<>();
-    //Room[] roomarray = rooms.toArray(new Room[rooms.size()]);
     ArrayList<Reservation> reservations = new ArrayList<>();
-    //Reservation[] restoappear=new Reservation[reservations.size()];
+
 
     public void addRoom(Room r) {
         rooms.add(r);
@@ -46,8 +45,6 @@ public class Hotel {
     }
     public boolean addReservationToRoom(Reservation r,int rnumb)
     {
-        //Room[] roomarray = rooms.toArray(new Room[rooms.size()]);
-        //Room roomfound;
         if(retrieveRoomFromNumber(rnumb)==null){
             //The next line will have to be changed if/when i create a Swing GUI
             System.out.println("Room not found so reservation was not added");
@@ -75,9 +72,7 @@ public class Hotel {
                 if (roomarray[i].Availability[k] != null) {//Checks if room i is available the reservation dates
                     a = 0;
                 } else {
-                    //roomtoadd=retrieveRoomFromNumber(roomarray[i].RoomNumber);
 
-                    //reserv.setRoom(retrieveRoomFromNumber(roomarray[i].RoomNumber));
                     reserv.setRoom(rooms.get(i));
                     //reservations.add(reserv);//Adds reservation to reservation list
                     a=roomarray[i].RoomNumber;
@@ -122,8 +117,7 @@ public class Hotel {
                             itr.remove();
                         }
                     }
-                //}*/
-                //else{reservations.remove(reservationid);}
+
                 //The next line will have to be changed if/when i create a Swing GUI
                 System.out.println("Reservation with reservation id " + reservationid + " was cancelled");
             } else {
@@ -135,21 +129,15 @@ public class Hotel {
     }
     public double incomeCalculate(int roomnumb)
     {
-        //Room r;
         double earnings;
-        //r=retrieveRoomFromNumber(roomnumb);
-        //System.out.println("" +retrieveRoomFromNumber(roomnumb)); This was used for debugging
         earnings=retrieveRoomFromNumber(roomnumb).costCalculate();
         return earnings;
     }
     public double incomeCalculate()
     {
         double income=0;
-        //Room[] roomcostarray=rooms.toArray(new Room[rooms.size()]);
-        //for(int i=0;i==rooms.size();i++)
         for(Room r:rooms)
         {
-            //income+=rooms.get(i).costCalculate();
             income+=r.costCalculate();
         }
         return income;
@@ -159,25 +147,19 @@ public class Hotel {
      */
     public void reservationPlan()
     {
-        //Room[] roomavailable=rooms.toArray(new Room[rooms.size()]);
-        //Room c;
         System.out.print("Room\t");
         for(int i=1;i<31;i++){System.out.print(""+ i +"\t");}//Prints days
         System.out.println();
-        //for(int j=0;j==rooms.size();j++)
         for(Room roomavailable:rooms) {
 
                 System.out.print(" " + roomavailable.RoomNumber + " \t");//Prints room number of all available rooms
 
-                //for(int k=0;roomavailable.Availability[k]==roomavailable.Availability[29];k++)
-                //for(c.Availability a:roomavailable.Availability)
-                for (int k = 0; k < 30; k++) {//Checks availability array and prints from it
+            for (int k = 0; k < 30; k++) {//Checks availability array and prints from it
                     if (roomavailable.Availability[k] == null) {
                         System.out.print("-\t");
                     } else {
                         System.out.print("*\t");
                     }
-                    //System.out.println();
 
             }
 

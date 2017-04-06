@@ -9,10 +9,8 @@ public class Reservation{
     int NumberOfPeople;
     Room room=null;
 
-    //protected Object room=new Room();
+
     static AtomicInteger id=new AtomicInteger(1);
-        //ReservationNumber=id.getAndIncrement();
-    //} //new AtomicInteger();
 
     public Reservation()
     {

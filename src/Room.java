@@ -5,32 +5,19 @@ public class Room {
     int MaxCapacity;
     double PricePerPerson;
     Reservation Availability[] = new Reservation[30];
-    //protected Object res=new Reservation();
-    //Reservation res;
 
     /**
      * Atomic integer's initial value set to 100 just for style so that first room number starts from 100;)
      */
     static AtomicInteger Roomid = new AtomicInteger(100);
-        //RoomNumber = Roomid.getAndIncrement();
-    //}// = new AtomicInteger(1);
 
-    //Reservation res=new Reservation();
     public Room()
     {
        RoomNumber = Roomid.getAndIncrement();
         // Reservation res=new Reservation();
     }
-   // public void setAvailability(Reservation res)
-   // {
-      /** This is propably a leftover from an experiment.If everything works ok will be deleted in final version
-       * for(int i=res.Arrival;i<(res.Arrival+res.DaysOfStay);i++)
-        {
-            Availability[i]=res;
-        }
-       */
 
-    //}
+
     public boolean addReservation(Reservation res)
    {
         //boolean a,b;
@@ -65,10 +52,8 @@ public class Room {
         }
         else
         {
-            //for(;Availability[i]==Availability[30];)
-            //{
-                cost+=(Availability[i].NumberOfPeople*PricePerPerson);
-            //}
+            cost+=(Availability[i].NumberOfPeople*PricePerPerson);
+
         }
         }
         return cost;
@@ -95,25 +80,20 @@ public class Room {
 
     public float occupiedPercentage()
     {
-        float percentage=0;
+        float percentage;
         float counter=0;
-        //for(int k=0;Availability[k]==Availability[28];k++)
-        //for(Reservation s:Availability)
+
         for(int i=0;i<Availability.length;i++)
         {
-            //System.out.println();
-            //while(s!=null)
-            //while(Availability!=null){
-           // try {
-                //while (Availability[i].ReservationNumber != 0) {//System.out.println(s);
+
             if(Availability[i]==null)
-            {//break;
+            {
                 i+=1;}
             else{
                     counter++;
 
                 }
-            //}catch(NullPointerException e){i++;}
+
         }
         percentage=(counter/30)*100;
         return percentage;
