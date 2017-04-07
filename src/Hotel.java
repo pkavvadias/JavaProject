@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.*;
 
 public class Hotel {
-    String GUIString;//Required for printing in JOptionpane
+    private String GUIString;//Required for printing in JOptionpane
     String HotelName;
     ArrayList<Room> rooms = new ArrayList<>();
     ArrayList<Reservation> reservations = new ArrayList<>();
@@ -99,7 +99,7 @@ public class Hotel {
         else{
             //The next line will have to be changed if/when i create a Swing GUI
             System.out.println("Reservation with reservation id " +reserv.ReservationNumber+ " added successfully to room with room number " +a+ "");
-           GUIString="No available room found";
+           GUIString="Reservation with reservation id " +reserv.ReservationNumber+ " added successfully to room with room number " +a+ "";
             return a;
         }
     }
@@ -175,4 +175,8 @@ public class Hotel {
         }
 
     }
+    public String getGUIString(){
+        return GUIString;
+    }
+
 }
