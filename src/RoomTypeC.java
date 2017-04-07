@@ -12,9 +12,9 @@ public class RoomTypeC extends Room {
     {
         //boolean a,b;
         boolean a=true;
-        for(int i=res.Arrival;i<(res.Arrival+ res.DaysOfStay);i++)
+        for(int i=res.getArrival();i<(res.getArrival()+ res.getDaysOfStay());i++)
         {
-            if(Availability[i]!=null ||res.NumberOfPeople>getMaxCapacity()||res.DaysOfStay<MinimumDays||res.NumberOfPeople<MinimumPeople)
+            if(Availability[i]!=null ||res.getNumberOfPeople()>getMaxCapacity()||res.getDaysOfStay()<MinimumDays||res.getNumberOfPeople()<MinimumPeople)
             {
 
                 a=false;
@@ -22,7 +22,7 @@ public class RoomTypeC extends Room {
             else
             {
                 Availability[i]=res;
-                Availability[i].ReservationNumber=res.ReservationNumber;
+                Availability[i].setReservationNumber(res.getReservationNumber());
                 res.setRoom(this);
                 a=true;
             }

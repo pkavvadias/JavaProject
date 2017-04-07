@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Random;
 import java.text.DecimalFormat;
-import java.util.Iterator;
+
 
 
 public class Main {
@@ -114,11 +114,11 @@ public class Main {
             while(k==0) {
                 String fullName = firstNames[random.nextInt(firstNames.length)] + " " + lastNames[random.nextInt(lastNames.length)];
                 Reservation reservation = new Reservation();
-                reservation.Client = fullName;
-                reservation.Arrival = random.nextInt(30);//Sets random values
-                reservation.DaysOfStay = random.nextInt((30 - reservation.Arrival));
+                reservation.setClient(fullName);
+                reservation.setArrival(random.nextInt(30));//Sets random values
+                reservation.setDaysOfStay(random.nextInt((30 - reservation.getArrival())));
                 //App supports only one month so if if DaysofStay+Arrival>30 a crash will occur
-                reservation.NumberOfPeople = random.nextInt(6);
+                reservation.setNumberOfPeople(random.nextInt(6));
                 hotel.addReservationToFirstRoom(reservation);
                 //hotel.addReservationToRoom(reservation,2);
                 hotel.reservations.add(reservation);
@@ -134,7 +134,7 @@ public class Main {
                 {
                     int resget=random.nextInt(hotel.reservations.size());
                     try {
-                        if (hotel.retrieveReservationFromNumber(resget).room == null) {
+                        if (hotel.retrieveReservationFromNumber(resget).getRoom() == null) {
                             resget += 1;
                         }
                     }catch(NullPointerException e){resget+=1;}
@@ -182,10 +182,10 @@ public class Main {
                         } else {
                             roomid = -1;
                         }
-                        newres.Arrival = arrivalDay;
-                        newres.DaysOfStay = daysToStay;
-                        newres.Client = clientName;
-                        newres.NumberOfPeople = number;
+                        newres.setArrival(arrivalDay);
+                        newres.setDaysOfStay(daysToStay);
+                        newres.setClient(clientName);
+                        newres.setNumberOfPeople(number);
                         if (roomid != -1) {
                             hotel.addReservationToRoom(newres, roomid);
                         } else {
@@ -200,10 +200,10 @@ public class Main {
                         System.out.print("ID \t Client name \t     Room number \n");
                             for (Reservation r : hotel.reservations) {
                                 //The above if statement is required to avoid exception if no room was available(so reservation not saved)
-                                if(r.room==null){System.out.print("");}
+                                if(r.getRoom()==null){System.out.print("");}
                                 else {
 
-                                    System.out.print("" + r.ReservationNumber + " \t " + r.Client + " \t " + r.room.getRoomNumber() + "\n");
+                                    System.out.print("" + r.getReservationNumber() + " \t " + r.getClient() + " \t " + r.getRoom().getRoomNumber() + "\n");
 
                                 }
                             }

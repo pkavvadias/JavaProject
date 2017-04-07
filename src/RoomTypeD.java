@@ -19,7 +19,7 @@ public class RoomTypeD extends Room {
             {
                 //for(;Availability[i]==Availability[30];)
                // {
-                    cost+=((Availability[i].NumberOfPeople-numberOfChildrenBeds)*getPricePerPerson())+(numberOfChildrenBeds)*(0.5*getPricePerPerson());
+                    cost+=((Availability[i].getNumberOfPeople()-numberOfChildrenBeds)*getPricePerPerson())+(numberOfChildrenBeds)*(0.5*getPricePerPerson());
                 //}
             }
         }

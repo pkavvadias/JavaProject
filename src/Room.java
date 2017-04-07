@@ -9,7 +9,7 @@ public class Room {
     /**
      * Atomic integer's initial value set to 100 just for style so that first room number starts from 100;)
      */
-    static AtomicInteger Roomid = new AtomicInteger(100);
+    private static AtomicInteger Roomid = new AtomicInteger(100);
 
     public Room()
     {
@@ -28,9 +28,9 @@ public class Room {
    {
         //boolean a,b;
        boolean a=true;
-       for(int i=res.Arrival;i<(res.Arrival+ res.DaysOfStay);i++)
+       for(int i=res.getArrival();i<(res.getArrival()+ res.getDaysOfStay());i++)
         {
-            if(Availability[i]!=null ||res.NumberOfPeople>MaxCapacity)
+            if(Availability[i]!=null ||res.getNumberOfPeople()>MaxCapacity)
             {
 
                 a=false;
@@ -38,7 +38,7 @@ public class Room {
             else
             {
                 Availability[i]=res;
-                Availability[i].ReservationNumber=res.ReservationNumber;
+                Availability[i].setReservationNumber(res.getReservationNumber());
                res.setRoom(this);
                 a=true;
             }
@@ -58,7 +58,7 @@ public class Room {
         }
         else
         {
-            cost+=(Availability[i].NumberOfPeople*PricePerPerson);
+            cost+=(Availability[i].getNumberOfPeople()*PricePerPerson);
 
         }
         }
@@ -70,7 +70,7 @@ public class Room {
         public boolean cancel ( int ReservationId) {
 
             for (int j = 0; Availability[j] == Availability[29]; j++) {
-                if (Availability[j].ReservationNumber == ReservationId)
+                if (Availability[j].getReservationNumber() == ReservationId)
                 {
                     if (Availability[j] != null) {
                         Availability[j] = null;

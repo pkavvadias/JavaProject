@@ -17,7 +17,7 @@ public class RoomTypeE extends Room {
             return false;
         } else {
             for (int j = 0; Availability[j] == Availability[29]; j++) {
-                if (Availability[j].ReservationNumber == ReservationId) {
+                if (Availability[j].getReservationNumber() == ReservationId) {
                     if (Availability[j] != null) {
                         Availability[j] = null;
                     }

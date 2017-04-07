@@ -1,16 +1,16 @@
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.*;
+
 
 public class Reservation{
-    String Client;//Variables need to be package-private
-    int ReservationNumber;
-    int Arrival;
-    int DaysOfStay;
-    int NumberOfPeople;
-    Room room=null;
+    private String Client;
+    private int ReservationNumber;
+    private int Arrival;
+    private int DaysOfStay;
+    private int NumberOfPeople;
+    private Room room=null;
 
 
-    static AtomicInteger id=new AtomicInteger(1);
+    private static AtomicInteger id=new AtomicInteger(1);
 
     public Reservation()
     {
@@ -22,4 +22,15 @@ public class Reservation{
     {
     room=r;
     }
+    public Room getRoom(){return room;}
+    public void setArrival(int i){Arrival=i;}
+    public int getArrival(){return Arrival;}
+    public void setDaysOfStay(int i){DaysOfStay=i;}
+    public int getDaysOfStay(){return DaysOfStay;}
+    public void setNumberOfPeople(int i){NumberOfPeople=i;}
+    public int getNumberOfPeople(){return NumberOfPeople;}
+    public void setReservationNumber(int i){ReservationNumber=i;}
+    public int getReservationNumber(){return ReservationNumber;}
+    public void setClient(String s){Client=s;}
+    public String getClient(){return Client;}
 }

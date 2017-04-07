@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 import java.util.*;
 
 public class Hotel {
@@ -31,7 +31,7 @@ public class Hotel {
         Reservation[] restoappear=new Reservation[reservations.size()];
        Reservation[] reservarray=reservations.toArray(new Reservation[reservations.size()]);
         for (int i = 0; i<reservarray.length; i++) {
-            if (reservarray[i].ReservationNumber == resid) {
+            if (reservarray[i].getReservationNumber() == resid) {
                 restoappear[i]=reservarray[i];
                 k=i;
 
@@ -57,8 +57,8 @@ public class Hotel {
             r.setRoom(retrieveRoomFromNumber(rnumb));
             retrieveRoomFromNumber(rnumb).addReservation(r);
             //The next line will have to be changed if/when i create a Swing GUI
-            System.out.println("Reservation with reservation id " +r.ReservationNumber+ "added successfully to room with id "+rnumb+ "");
-            GUIString="Reservation with reservation id " +r.ReservationNumber+ "added successfully to room with id "+rnumb+ "";
+            System.out.println("Reservation with reservation id " +r.getReservationNumber()+ "added successfully to room with id "+rnumb+ "");
+            GUIString="Reservation with reservation id " +r.getReservationNumber()+ "added successfully to room with id "+rnumb+ "";
             reservations.add(r);
             return true;
         }
@@ -68,7 +68,7 @@ public class Hotel {
         //Room roomtoadd;
         Room[] roomarray = rooms.toArray(new Room[rooms.size()]);
         for (int i = 0; i<roomarray.length; i++) {
-            for (int k = reserv.Arrival; k < (reserv.Arrival+reserv.DaysOfStay); k++) {
+            for (int k = reserv.getArrival(); k < (reserv.getArrival()+reserv.getDaysOfStay()); k++) {
 
 
                 if (roomarray[i].Availability[k] != null) {//Checks if room i is available the reservation dates
@@ -98,8 +98,9 @@ public class Hotel {
         }
         else{
             //The next line will have to be changed if/when i create a Swing GUI
-            System.out.println("Reservation with reservation id " +reserv.ReservationNumber+ " added successfully to room with room number " +a+ "");
-           GUIString="Reservation with reservation id " +reserv.ReservationNumber+ " added successfully to room with room number " +a+ "";
+            System.out.println("Reservation with reservation id " +reserv.getReservationNumber()+ " added successfully to room with room number " +a+ "");
+           GUIString="Reservation with reservation id " +reserv.getReservationNumber()+ " added successfully to room with room number " +a+ "";
+            //GUIString ="a";
             return a;
         }
     }
