@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.*;
 
 public class Hotel {
-
+    String GUIString;//Required for printing in JOptionpane
     String HotelName;
     ArrayList<Room> rooms = new ArrayList<>();
     ArrayList<Reservation> reservations = new ArrayList<>();
@@ -48,6 +48,7 @@ public class Hotel {
         if(retrieveRoomFromNumber(rnumb)==null){
             //The next line will have to be changed if/when i create a Swing GUI
             System.out.println("Room not found so reservation was not added");
+            GUIString="Room not found so reservation was not added";
             return false;
         }
         else
@@ -57,6 +58,7 @@ public class Hotel {
             retrieveRoomFromNumber(rnumb).addReservation(r);
             //The next line will have to be changed if/when i create a Swing GUI
             System.out.println("Reservation with reservation id " +r.ReservationNumber+ "added successfully to room with id "+rnumb+ "");
+            GUIString="Reservation with reservation id " +r.ReservationNumber+ "added successfully to room with id "+rnumb+ "";
             reservations.add(r);
             return true;
         }
@@ -91,12 +93,13 @@ public class Hotel {
         {
             //The next line will have to be changed if/when i create a Swing GUI
             System.out.println("No available room found");
-
+            GUIString="No available room found";
                     return a;
         }
         else{
             //The next line will have to be changed if/when i create a Swing GUI
             System.out.println("Reservation with reservation id " +reserv.ReservationNumber+ " added successfully to room with room number " +a+ "");
+           GUIString="No available room found";
             return a;
         }
     }
@@ -120,12 +123,16 @@ public class Hotel {
 
                 //The next line will have to be changed if/when i create a Swing GUI
                 System.out.println("Reservation with reservation id " + reservationid + " was cancelled");
+                    GUIString="Reservation with reservation id " + reservationid + " was cancelled";
             } else {
                 //The next line will have to be changed if/when i create a Swing GUI
                 System.out.println("Reservation with reservation id " + reservationid + " was not cancelled");
+                GUIString="Reservation with reservation id " + reservationid + " was not cancelled";
             }
         }catch(ArrayIndexOutOfBoundsException e)
-        {System.out.println("Reservation with reservation id " + reservationid + " was not cancelled");}
+        {System.out.println("Reservation with reservation id " + reservationid + " was not cancelled");
+        GUIString="Reservation with reservation id " + reservationid + " was not cancelled";
+        }
     }
     public double incomeCalculate(int roomnumb)
     {
