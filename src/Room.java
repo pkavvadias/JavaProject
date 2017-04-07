@@ -1,9 +1,9 @@
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Room {
-    int RoomNumber;
-    int MaxCapacity;
-    double PricePerPerson;
+    private int RoomNumber;
+    private int MaxCapacity;
+    private double PricePerPerson;
     Reservation Availability[] = new Reservation[30];
 
     /**
@@ -17,6 +17,12 @@ public class Room {
         // Reservation res=new Reservation();
     }
 
+    public void setRoomNumber(int i){RoomNumber=i;}
+    public int getRoomNumber(){return RoomNumber;}
+    public void setMaxCapacity(int i){MaxCapacity=i;}
+    public int getMaxCapacity(){return MaxCapacity;}
+    public void setPricePerPerson(double i){PricePerPerson=i;}
+    public double getPricePerPerson(){return PricePerPerson;}
 
     public boolean addReservation(Reservation res)
    {

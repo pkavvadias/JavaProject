@@ -28,8 +28,8 @@ public class Main {
         //Block for first room
         {
             Room room1 = new Room();
-            room1.PricePerPerson = 20;
-            room1.MaxCapacity = 4;
+            room1.setPricePerPerson(20);
+            room1.setMaxCapacity(4);
             //room1.RoomNumber=2;
             hotel.rooms.add(room1);
 
@@ -37,73 +37,75 @@ public class Main {
         //Block for second room
         {
             Room room2 = new Room();
-            room2.PricePerPerson = 15;
-            room2.MaxCapacity = 2;
+            room2.setPricePerPerson(15);
+            room2.setMaxCapacity(2);
             hotel.rooms.add(room2);
         }
         //Block for third room
         {
             RoomTypeA room3 = new RoomTypeA();
-            room3.PricePerDay = 10;
-            room3.PricePerPerson = 5;
-            room3.MaxCapacity = 2;
+            room3.setPricePerDay(10);
+            room3.setPricePerPerson(5);
+            room3.setMaxCapacity(2);
             hotel.rooms.add(room3);
         }
         //Block for forth room
         {
             RoomTypeB room4 = new RoomTypeB();
-            room4.DiscountPerDay = 5;
-            room4.PricePerDay = 15;
-            room4.PricePerPerson = 25;
-            room4.MaxCapacity = 4;
+            room4.setDiscountPerDay(5);
+            room4.setPricePerDay(15);
+            room4.setPricePerPerson(25);
+            room4.setMaxCapacity(4);
             hotel.rooms.add(room4);
         }
         //Block for fifth room
         {
             RoomTypeC room5 = new RoomTypeC();
-            room5.MinimumDays = 4;
-            room5.MinimumPeople = 5;
-            room5.MaxCapacity = 6;
-            room5.PricePerPerson = 20;
+            room5.setMinimumDays(4);
+            room5.setMinimumPeople(5);
+            room5.setMaxCapacity(6);
+            room5.setPricePerPerson(20);
             hotel.addRoom(room5);
         }
         //Block for sixth room
         {
             RoomTypeD room6 = new RoomTypeD();
-            room6.numberOfChildrenBeds = 2;
-            room6.PricePerPerson = 14;
-            room6.MaxCapacity = 5;
+            room6.setNumberOfChildrenBeds(2);
+            room6.setPricePerPerson(14);
+            room6.setMaxCapacity(5);
             hotel.addRoom(room6);
         }
         //Block for seventh room
         {
-            Room room7 = new Room();
-            room7.PricePerPerson = 19;
-            room7.MaxCapacity = 4;
+            RoomTypeE room7 = new RoomTypeE();
+            room7.setPricePerPerson(19);
+            room7.setMaxCapacity(4);
+            room7.setCancellationPermittedThreshold(3);
+            room7.setCurrentDate(5);
             hotel.addRoom(room7);
         }
         //Block for eighth room
         {
             Room room8 = new Room();
-            room8.PricePerPerson = 8;
-            room8.MaxCapacity = 2;
+            room8.setPricePerPerson(8);
+            room8.setMaxCapacity(2);
             hotel.addRoom(room8);
         }
         //Block for ninth room
         {
             RoomTypeA room9 = new RoomTypeA();
-            room9.PricePerDay = 30;
-            room9.PricePerPerson = 15;
-            room9.MaxCapacity = 2;
+            room9.setPricePerDay(30);
+            room9.setPricePerPerson(15);
+            room9.setMaxCapacity(2);
             hotel.addRoom(room9);
         }
         //Block for tenth room
         {
             RoomTypeB room10 = new RoomTypeB();
-            room10.DiscountPerDay = 3;
-            room10.PricePerPerson = 10;
-            room10.PricePerDay = 30;
-            room10.MaxCapacity = 3;
+            room10.setDiscountPerDay(3);
+            room10.setPricePerPerson(10);
+            room10.setPricePerDay(30);
+            room10.setMaxCapacity(3);
             hotel.addRoom(room10);
         }
         int k=0;
@@ -201,7 +203,7 @@ public class Main {
                                 if(r.room==null){System.out.print("");}
                                 else {
 
-                                    System.out.print("" + r.ReservationNumber + " \t " + r.Client + " \t " + r.room.RoomNumber + "\n");
+                                    System.out.print("" + r.ReservationNumber + " \t " + r.Client + " \t " + r.room.getRoomNumber() + "\n");
 
                                 }
                             }
@@ -213,7 +215,7 @@ public class Main {
                         df.setMaximumFractionDigits(2);
                         for(Room r:hotel.rooms)
                         {
-                            System.out.println(""+r.RoomNumber+ " \t " +df.format(r.occupiedPercentage())+ " \t " +hotel.incomeCalculate(r.RoomNumber)+ " \t ");
+                            System.out.println(""+r.getRoomNumber()+ " \t " +df.format(r.occupiedPercentage())+ " \t " +hotel.incomeCalculate(r.getRoomNumber())+ " \t ");
 
                         }
                         break;

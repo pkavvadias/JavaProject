@@ -1,6 +1,9 @@
 
 public class RoomTypeD extends Room {
-    int numberOfChildrenBeds;//Children under 3 years pld have special beds and pay half the price per person
+    private int numberOfChildrenBeds;//Children under 3 years pld have special beds and pay half the price per person
+
+    public void setNumberOfChildrenBeds(int i){numberOfChildrenBeds=i;}
+    public int getNumberOfChildrenBeds(){return numberOfChildrenBeds;}
     @Override
     public double costCalculate()
     {
@@ -16,7 +19,7 @@ public class RoomTypeD extends Room {
             {
                 //for(;Availability[i]==Availability[30];)
                // {
-                    cost+=((Availability[i].NumberOfPeople-numberOfChildrenBeds)*PricePerPerson)+(numberOfChildrenBeds)*(0.5*PricePerPerson);
+                    cost+=((Availability[i].NumberOfPeople-numberOfChildrenBeds)*getPricePerPerson())+(numberOfChildrenBeds)*(0.5*getPricePerPerson());
                 //}
             }
         }

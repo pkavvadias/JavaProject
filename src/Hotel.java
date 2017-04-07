@@ -15,7 +15,7 @@ public class Hotel {
     public Room retrieveRoomFromNumber(int roomid) {
         Room c=null;
              for(Room rg:rooms){
-            if(rg.RoomNumber==roomid)
+            if(rg.getRoomNumber()==roomid)
             {c= rg;break;}
             else {
 
@@ -77,11 +77,11 @@ public class Hotel {
 
                     reserv.setRoom(rooms.get(i));
                     //reservations.add(reserv);//Adds reservation to reservation list
-                    a=roomarray[i].RoomNumber;
+                    a=roomarray[i].getRoomNumber();
                     //for (int l = reserv.Arrival; l < (reserv.Arrival+reserv.DaysOfStay); l++)
                    //{retrieveRoomFromNumber(roomarray[i].RoomNumber).addReservation(reserv);}
                    roomarray[i].addReservation(reserv);//Adds reservation to the room of the array
-                    retrieveRoomFromNumber(roomarray[i].RoomNumber).addReservation(reserv);//Test for occupiedpercentage
+                    retrieveRoomFromNumber(roomarray[i].getRoomNumber()).addReservation(reserv);//Test for occupiedpercentage
 
 
                 }
@@ -159,7 +159,7 @@ public class Hotel {
         System.out.println();
         for(Room roomavailable:rooms) {
 
-                System.out.print(" " + roomavailable.RoomNumber + " \t");//Prints room number of all available rooms
+                System.out.print(" " + roomavailable.getRoomNumber() + " \t");//Prints room number of all available rooms
 
             for (int k = 0; k < 30; k++) {//Checks availability array and prints from it
                     if (roomavailable.Availability[k] == null) {
