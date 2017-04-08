@@ -165,6 +165,7 @@ public class Main {
                         k=0;//Controls the while statement
                         break;
                     case 2:
+                        s.nextLine();//Required to clear scanner's buffer
                         Reservation newres = new Reservation();
                         System.out.println("Insert name");
                         clientName = s.nextLine();
@@ -190,6 +191,7 @@ public class Main {
                             hotel.addReservationToRoom(newres, roomid);
                         } else {
                             hotel.addReservationToFirstRoom(newres);
+                            hotel.reservations.add(newres);
                         }
                         break;
                     case 3:
