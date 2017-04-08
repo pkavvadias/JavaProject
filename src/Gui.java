@@ -303,27 +303,29 @@ public class Gui {
     private class B2EventHandle implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Reservation reserv = new Reservation();
-            String name = JOptionPane.showInputDialog(null, "Insert name", "NAME", JOptionPane.QUESTION_MESSAGE);
-            reserv.setClient(name);
-            int arrivDay = Integer.parseInt((JOptionPane.showInputDialog(null, "Insert arrival day", "ARRIVAL DAY", JOptionPane.QUESTION_MESSAGE)));
-            reserv.setArrival(arrivDay);
-            int daysOfStay = Integer.parseInt((JOptionPane.showInputDialog(null, "Insert days of stay", "DAYS OF STAY", JOptionPane.QUESTION_MESSAGE)));
-            reserv.setDaysOfStay(daysOfStay);
-            int numbPeople = Integer.parseInt((JOptionPane.showInputDialog(null, "Insert number of people", "NUMBER OF PEOPLE", JOptionPane.QUESTION_MESSAGE)));
-            reserv.setNumberOfPeople(numbPeople);
-            int answer = JOptionPane.showConfirmDialog(null, "Do you want to enter specific room id?", "SPECIFIC ROOM ID", JOptionPane.YES_NO_CANCEL_OPTION);
-            if (answer == JOptionPane.YES_OPTION) {
-                int rid = Integer.parseInt((JOptionPane.showInputDialog(null, "Arrival Day", "ARRIVAL DAY", JOptionPane.QUESTION_MESSAGE)));
-                hotel.addReservationToRoom(reserv, rid);
-                JOptionPane.showMessageDialog(null, hotel.getGUIString(), "RESULT", JOptionPane.INFORMATION_MESSAGE);
+            try {
+                Reservation reserv = new Reservation();
+                String name = JOptionPane.showInputDialog(null, "Insert name", "NAME", JOptionPane.QUESTION_MESSAGE);
+                reserv.setClient(name);
+                int arrivDay = Integer.parseInt((JOptionPane.showInputDialog(null, "Insert arrival day", "ARRIVAL DAY", JOptionPane.QUESTION_MESSAGE)));
+                reserv.setArrival(arrivDay);
+                int daysOfStay = Integer.parseInt((JOptionPane.showInputDialog(null, "Insert days of stay", "DAYS OF STAY", JOptionPane.QUESTION_MESSAGE)));
+                reserv.setDaysOfStay(daysOfStay);
+                int numbPeople = Integer.parseInt((JOptionPane.showInputDialog(null, "Insert number of people", "NUMBER OF PEOPLE", JOptionPane.QUESTION_MESSAGE)));
+                reserv.setNumberOfPeople(numbPeople);
+                int answer = JOptionPane.showConfirmDialog(null, "Do you want to enter specific room id?", "SPECIFIC ROOM ID", JOptionPane.YES_NO_CANCEL_OPTION);
+                if (answer == JOptionPane.YES_OPTION) {
+                    int rid = Integer.parseInt((JOptionPane.showInputDialog(null, "Arrival Day", "ARRIVAL DAY", JOptionPane.QUESTION_MESSAGE)));
+                    hotel.addReservationToRoom(reserv, rid);
+                    JOptionPane.showMessageDialog(null, hotel.getGUIString(), "RESULT", JOptionPane.INFORMATION_MESSAGE);
 
 
-            } else {
-                hotel.addReservationToFirstRoom(reserv);
-                JOptionPane.showMessageDialog(null, hotel.getGUIString(), "RESULT", JOptionPane.INFORMATION_MESSAGE);
-                hotel.reservations.add(reserv);
-            }
+                } else {
+                    hotel.addReservationToFirstRoom(reserv);
+                    JOptionPane.showMessageDialog(null, hotel.getGUIString(), "RESULT", JOptionPane.INFORMATION_MESSAGE);
+                    hotel.reservations.add(reserv);
+                }
+            }catch(NumberFormatException nf){JOptionPane.showMessageDialog(null, "Incorrect input.Please try again ", "ERROR", JOptionPane.ERROR_MESSAGE);}
         }
 
 
