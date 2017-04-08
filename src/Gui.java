@@ -248,6 +248,7 @@ public class Gui {
         {
             JButton exit = new JButton();
             exit.setText("Exit");
+            exit.addActionListener(new B8EventHandle());
             //mainPanel.add(exit);
             frame1ContentPane.add(exit);
         }
@@ -266,7 +267,7 @@ public class Gui {
     }
 
 
-    public class B1EventHandle implements ActionListener {
+    private class B1EventHandle implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             ;
             Random random =new Random();
@@ -299,7 +300,7 @@ public class Gui {
         }
     }
 
-    public class B2EventHandle implements ActionListener {
+    private class B2EventHandle implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             Reservation reserv = new Reservation();
@@ -328,7 +329,7 @@ public class Gui {
 
     }
 
-    public class B4EventHandle implements ActionListener {
+    private class B4EventHandle implements ActionListener {
         int d1;
         String d2;
         int d3;
@@ -373,6 +374,12 @@ public class Gui {
             table.setVisible(true);
             scrollPane.setVisible(true);
     }
+    }
+    private class B8EventHandle implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+                        System.exit(0);
+        }
     }
 }
 
