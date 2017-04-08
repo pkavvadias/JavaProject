@@ -20,14 +20,11 @@ public class RoomTypeB extends RoomTypeA {
         }
         else
         {
-           // for(;Availability[i]==Availability[30];)
-            //{
-                cost+=FinalPricePerDay;
+            cost+=FinalPricePerDay;
                 if(FinalPricePerDay>=(0.5*getPricePerDay()))
                 {
                     FinalPricePerDay=(FinalPricePerDay-DiscountPerDay);
                 }
-            //}
         }
     }
     return cost;

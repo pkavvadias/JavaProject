@@ -14,7 +14,7 @@ public class Room {
     public Room()
     {
        RoomNumber = Roomid.getAndIncrement();
-        // Reservation res=new Reservation();
+
     }
 
     public void setRoomNumber(int i){RoomNumber=i;}

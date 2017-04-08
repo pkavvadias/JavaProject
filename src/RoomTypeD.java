@@ -17,10 +17,7 @@ public class RoomTypeD extends Room {
             }
             else
             {
-                //for(;Availability[i]==Availability[30];)
-               // {
                     cost+=((Availability[i].getNumberOfPeople()-numberOfChildrenBeds)*getPricePerPerson())+(numberOfChildrenBeds)*(0.5*getPricePerPerson());
-                //}
             }
         }
         return cost;

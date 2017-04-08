@@ -46,7 +46,7 @@ public class Hotel {
     public boolean addReservationToRoom(Reservation r,int rnumb)
     {
         if(retrieveRoomFromNumber(rnumb)==null){
-            //The next line will have to be changed if/when i create a Swing GUI
+
             System.out.println("Room not found so reservation was not added");
             GUIString="Room not found so reservation was not added";
             return false;
@@ -56,7 +56,7 @@ public class Hotel {
 
             r.setRoom(retrieveRoomFromNumber(rnumb));
             retrieveRoomFromNumber(rnumb).addReservation(r);
-            //The next line will have to be changed if/when i create a Swing GUI
+
             System.out.println("Reservation with reservation id " +r.getReservationNumber()+ "added successfully to room with id "+rnumb+ "");
             GUIString="Reservation with reservation id " +r.getReservationNumber()+ "added successfully to room with id "+rnumb+ "";
             reservations.add(r);
@@ -78,10 +78,8 @@ public class Hotel {
                     reserv.setRoom(rooms.get(i));
                     //reservations.add(reserv);//Adds reservation to reservation list
                     a=roomarray[i].getRoomNumber();
-                    //for (int l = reserv.Arrival; l < (reserv.Arrival+reserv.DaysOfStay); l++)
-                   //{retrieveRoomFromNumber(roomarray[i].RoomNumber).addReservation(reserv);}
-                   roomarray[i].addReservation(reserv);//Adds reservation to the room of the array
-                   retrieveRoomFromNumber(roomarray[i].getRoomNumber()).addReservation(reserv);//Test for occupiedpercentage
+                    roomarray[i].addReservation(reserv);//Adds reservation to the room of the array
+                   retrieveRoomFromNumber(roomarray[i].getRoomNumber()).addReservation(reserv);
 
 
                 }
@@ -91,13 +89,13 @@ public class Hotel {
         }
         if(a==0)
         {
-            //The next line will have to be changed if/when i create a Swing GUI
+
             System.out.println("No available room found");
             GUIString="No available room found";
                     return a;
         }
         else{
-            //The next line will have to be changed if/when i create a Swing GUI
+
             System.out.println("Reservation with reservation id " +reserv.getReservationNumber()+ " added successfully to room with room number " +a+ "");
            GUIString="Reservation with reservation id " +reserv.getReservationNumber()+ " added successfully to room with room number " +a+ "";
             //GUIString ="a";
@@ -122,11 +120,9 @@ public class Hotel {
                         }
                     }
 
-                //The next line will have to be changed if/when i create a Swing GUI
                 System.out.println("Reservation with reservation id " + reservationid + " was cancelled");
                     GUIString="Reservation with reservation id " + reservationid + " was cancelled";
             } else {
-                //The next line will have to be changed if/when i create a Swing GUI
                 System.out.println("Reservation with reservation id " + reservationid + " was not cancelled");
                 GUIString="Reservation with reservation id " + reservationid + " was not cancelled";
             }
@@ -150,9 +146,7 @@ public class Hotel {
         }
         return income;
     }
-    /**
-     * The print/println code of method reservationPlan will be changed if/when i add a Swing GUI
-     */
+
     public void reservationPlan()
     {
         System.out.print("Room\t");

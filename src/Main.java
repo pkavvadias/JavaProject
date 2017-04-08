@@ -120,9 +120,10 @@ public class Main {
                 //App supports only one month so if if DaysofStay+Arrival>30 a crash will occur
                 reservation.setNumberOfPeople(random.nextInt(6));
                 hotel.addReservationToFirstRoom(reservation);
-                //hotel.addReservationToRoom(reservation,2);
+
                 hotel.reservations.add(reservation);
                 random_cancel=random.nextInt(4);//Gives a random number between 0 and 3
+
                 /**
                  * The try-catch block and the two if statements in the next while loop is a workaround
                  * Because of static method atomic integer in reservation class each reservation gets a unique id
@@ -130,6 +131,7 @@ public class Main {
                  * If by luck the while loop tried to delete a Reservation with that id(essentially a non existent reservation)
                  *a crash will occur.So we prevent that by ordering to delete the reservation with next ID
                  */
+
                 if(random_cancel==2)
                 {
                     int resget=random.nextInt(hotel.reservations.size());
@@ -139,7 +141,7 @@ public class Main {
                         }
                     }catch(NullPointerException e){resget+=1;}
                     hotel.cancelReservation(resget);
-                    break;//hotel.reservations.get(resget);
+                    break;
                 }
                 k=1;
             }
@@ -221,7 +223,7 @@ public class Main {
 
                         }
                         break;
-                        //occupiedpercentage not displayed properly
+
                     case 6:
                         hotel.reservationPlan();
                         break;

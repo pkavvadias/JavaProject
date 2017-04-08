@@ -10,7 +10,6 @@ public class RoomTypeC extends Room {
     @Override
     public boolean addReservation(Reservation res)
     {
-        //boolean a,b;
         boolean a=true;
         for(int i=res.getArrival();i<(res.getArrival()+ res.getDaysOfStay());i++)
         {
