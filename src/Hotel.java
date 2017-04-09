@@ -51,26 +51,39 @@ public class Hotel {
         return restoappear[k];
 
     }
-    public boolean addReservationToRoom(Reservation r,int rnumb)
-    {
-        if(retrieveRoomFromNumber(rnumb)==null){
+    public boolean addReservationToRoom(Reservation r,int rnumb) {
+        boolean a = true;
+
+        if (retrieveRoomFromNumber(rnumb) == null) {
 
             System.out.println("Room not found so reservation was not added");
-            GUIString="Room not found so reservation was not added";
-            return false;
-        }
-        else
-        {
+            GUIString = "Room not found so reservation was not added";
+            a = false;
+        } else {
+            for (int k = r.getArrival(); k < (r.getArrival() + r.getDaysOfStay()); k++) {
 
-            r.setRoom(retrieveRoomFromNumber(rnumb));
-            retrieveRoomFromNumber(rnumb).addReservation(r);
 
-            System.out.println("Reservation with reservation id " +r.getReservationNumber()+ "added successfully to room with id "+rnumb+ "");
-            GUIString="Reservation with reservation id " +r.getReservationNumber()+ "added successfully to room with id "+rnumb+ "";
-            reservations.add(r);
-            return true;
+                if (retrieveRoomFromNumber(rnumb).Availability[k] != null) {
+                    System.out.println("Reservation was not added.Room is occupied");
+                    GUIString="Reservation was not added.Room is occupied";
+                    a = false;
+                    break;
+                } else {
+
+                    r.setRoom(retrieveRoomFromNumber(rnumb));
+                    retrieveRoomFromNumber(rnumb).addReservation(r);
+
+                    System.out.println("Reservation with reservation id " + r.getReservationNumber() + " added successfully to room with id " + rnumb + "");
+                    GUIString = "Reservation with reservation id " + r.getReservationNumber() + " added successfully to room with id " + rnumb + "";
+                    reservations.add(r);
+                }
+
+            }
+
         }
+        return a;
     }
+
     public int addReservationToFirstRoom(Reservation reserv) {
         int a=0;
         //Room roomtoadd;
@@ -161,8 +174,7 @@ public class Hotel {
         for(int i=1;i<31;i++){System.out.print(""+ i +"\t");}//Prints days
         System.out.println();
         for(Room roomavailable:rooms) {
-
-                System.out.print(" " + roomavailable.getRoomNumber() + " \t");//Prints room number of all available rooms
+            System.out.print(" " + roomavailable.getRoomNumber() + " \t");//Prints room number of all available rooms
 
             for (int k = 0; k < 30; k++) {//Checks availability array and prints from it
                     if (roomavailable.Availability[k] == null) {

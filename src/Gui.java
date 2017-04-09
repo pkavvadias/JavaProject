@@ -238,6 +238,7 @@ public class Gui {
         {
             JButton viewReservationPlan = new JButton();
             viewReservationPlan.setText("View reservation plan");
+            viewReservationPlan.addActionListener(new B6EventHandle());
             //mainPanel.add(viewReservations);
             frame1ContentPane.add(viewReservationPlan);
         }
@@ -310,14 +311,14 @@ public class Gui {
                 String name = JOptionPane.showInputDialog(null, "Insert name", "NAME", JOptionPane.QUESTION_MESSAGE);
                 reserv.setClient(name);
                 int arrivDay = Integer.parseInt((JOptionPane.showInputDialog(null, "Insert arrival day", "ARRIVAL DAY", JOptionPane.QUESTION_MESSAGE)));
-                reserv.setArrival(arrivDay);
+                reserv.setArrival(arrivDay-1);
                 int daysOfStay = Integer.parseInt((JOptionPane.showInputDialog(null, "Insert days of stay", "DAYS OF STAY", JOptionPane.QUESTION_MESSAGE)));
                 reserv.setDaysOfStay(daysOfStay);
                 int numbPeople = Integer.parseInt((JOptionPane.showInputDialog(null, "Insert number of people", "NUMBER OF PEOPLE", JOptionPane.QUESTION_MESSAGE)));
                 reserv.setNumberOfPeople(numbPeople);
                 int answer = JOptionPane.showConfirmDialog(null, "Do you want to enter specific room id?", "SPECIFIC ROOM ID", JOptionPane.YES_NO_CANCEL_OPTION);
                 if (answer == JOptionPane.YES_OPTION) {
-                    int rid = Integer.parseInt((JOptionPane.showInputDialog(null, "Arrival Day", "ARRIVAL DAY", JOptionPane.QUESTION_MESSAGE)));
+                    int rid = Integer.parseInt((JOptionPane.showInputDialog(null, "Room id", "ROOM ID", JOptionPane.QUESTION_MESSAGE)));
                     hotel.addReservationToRoom(reserv, rid);
                     JOptionPane.showMessageDialog(null, hotel.getGUIString(), "RESULT", JOptionPane.INFORMATION_MESSAGE);
 
@@ -378,6 +379,48 @@ public class Gui {
             table.setVisible(true);
             scrollPane.setVisible(true);
     }
+    }
+    private class B6EventHandle implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent rp) {
+
+            DefaultTableModel model = new DefaultTableModel(0,31);
+            for(Room ravail:hotel.getRoom()){
+                Vector rows=new Vector();
+
+                rows.add(ravail.getRoomNumber());
+                for (int k = 0; k < 30; k++) {
+                    if (ravail.Availability[k] == null) {
+                        rows.add("-");
+                    } else {
+                        rows.add("*");
+                    }
+
+                }
+
+                model.addRow(rows);
+            }
+            JFrame frames = new JFrame("RESERVATION PLAN");
+            frames.setExtendedState(Frame.MAXIMIZED_BOTH);//Sets it to full screen by default
+            JPanel panel = new JPanel();
+            panel.setLayout(new BorderLayout());
+            JTable table = new JTable(model);
+            table.getColumnModel().getColumn(0).setHeaderValue("ROOMS");
+            for(int i=1;i<31;i++)
+            {
+                table.getColumnModel().getColumn(i).setHeaderValue(+i);
+            }
+            table.getTableHeader().repaint();
+            JScrollPane scrollPane = new JScrollPane(table);
+
+            panel.add(scrollPane);
+            frames.getContentPane().add(panel);
+
+            frames.pack();
+            frames.setVisible(true);
+            table.setVisible(true);
+            scrollPane.setVisible(true);
+        }
     }
     private class B8EventHandle implements ActionListener{
         @Override
