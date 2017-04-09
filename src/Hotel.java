@@ -3,14 +3,22 @@ import java.util.*;
 
 public class Hotel {
     private String GUIString;//Required for printing in JOptionpane
-    String HotelName;
-    ArrayList<Room> rooms = new ArrayList<>();
-    ArrayList<Reservation> reservations = new ArrayList<>();
+    private String HotelName;
+    private ArrayList<Room> rooms = new ArrayList<>();
+    private ArrayList<Reservation> reservations = new ArrayList<>();
 
 
     public void addRoom(Room r) {
         rooms.add(r);
     }
+    public String getGUIString(){
+        return GUIString;
+    }
+    public void setHotelName(String s){HotelName=s;}
+    public String getHotelName(){return HotelName;}
+    public ArrayList<Room> getRoom(){return rooms;}
+    public void setReservations(Reservation r){reservations.add(r);}
+    public ArrayList<Reservation> getReservations(){return reservations;}
 
     public Room retrieveRoomFromNumber(int roomid) {
         Room c=null;
@@ -98,7 +106,7 @@ public class Hotel {
 
             System.out.println("Reservation with reservation id " +reserv.getReservationNumber()+ " added successfully to room with room number " +a+ "");
            GUIString="Reservation with reservation id " +reserv.getReservationNumber()+ " added successfully to room with room number " +a+ "";
-            //GUIString ="a";
+
             return a;
         }
     }
@@ -169,9 +177,6 @@ public class Hotel {
 
         }
 
-    }
-    public String getGUIString(){
-        return GUIString;
     }
 
 }

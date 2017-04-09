@@ -11,6 +11,7 @@ import java.util.Vector;
 
 public class Gui {
     private Hotel hotel = new Hotel();
+
     /**
      * ByteArrayOutputStream baos = new ByteArrayOutputStream();
      * PrintStream ps = new PrintStream(baos);
@@ -41,7 +42,7 @@ public class Gui {
         room1.setPricePerPerson(20);
         room1.setMaxCapacity(4);
         //room1.RoomNumber=2;
-        hotel.rooms.add(room1);
+        hotel.addRoom(room1);
 
     }
 
@@ -50,7 +51,7 @@ public class Gui {
         Room room2 = new Room();
         room2.setPricePerPerson(15);
         room2.setMaxCapacity(2);
-        hotel.rooms.add(room2);
+        hotel.addRoom(room2);
     }
 
     //Block for third room
@@ -59,7 +60,7 @@ public class Gui {
         room3.setPricePerDay(10);
         room3.setPricePerPerson(5);
         room3.setMaxCapacity(2);
-        hotel.rooms.add(room3);
+        hotel.addRoom(room3);
     }
 
     //Block for forth room
@@ -69,7 +70,7 @@ public class Gui {
         room4.setPricePerDay(15);
         room4.setPricePerPerson(25);
         room4.setMaxCapacity(4);
-        hotel.rooms.add(room4);
+        hotel.addRoom(room4);
     }
 
     //Block for fifth room
@@ -133,6 +134,7 @@ public class Gui {
 
 
     public Gui() {
+        hotel.setHotelName("Hotel");
          Random random = new Random();
 
         /**
@@ -154,7 +156,7 @@ public class Gui {
         reservation.setNumberOfPeople(random.nextInt(6));
         hotel.addReservationToFirstRoom(reservation);
         //hotel.addReservationToRoom(reservation,2);
-        hotel.reservations.add(reservation);
+        hotel.setReservations(reservation);
         random_cancel = random.nextInt(4);//Gives a random number between 0 and 3
         JOptionPane.showMessageDialog(null, hotel.getGUIString(), "RESULTS", JOptionPane.INFORMATION_MESSAGE);
 
@@ -167,7 +169,7 @@ public class Gui {
          *a crash will occur.So we prevent that by ordering to delete the reservation with next ID
          */
         if (random_cancel == 2) {
-            int resget = random.nextInt(hotel.reservations.size());
+            int resget = random.nextInt(hotel.getReservations().size());
             try {
                 if (hotel.retrieveReservationFromNumber(resget).getRoom() == null) {
                     resget += 1;
@@ -269,7 +271,7 @@ public class Gui {
 
     private class B1EventHandle implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            ;
+
             Random random =new Random();
             String fullName = firstNames[random.nextInt(firstNames.length)] + " " + lastNames[random.nextInt(lastNames.length)];
             Reservation res = new Reservation();
@@ -280,12 +282,12 @@ public class Gui {
             res.setNumberOfPeople(random.nextInt(6));
             hotel.addReservationToFirstRoom(res);
             //hotel.addReservationToRoom(reservation,2);
-            hotel.reservations.add(res);
+            hotel.setReservations(res);
             JOptionPane.showMessageDialog(null, hotel.getGUIString(), "RESULTS", JOptionPane.INFORMATION_MESSAGE);
 
             random_cancel = random.nextInt(4);//Gives a random number between 0 and 3
             if (random_cancel == 2) {
-                int resget = random.nextInt(hotel.reservations.size());
+                int resget = random.nextInt(hotel.getReservations().size());
                 try {
                     if (hotel.retrieveReservationFromNumber(resget).getRoom() == null) {
                         resget += 1;
@@ -323,7 +325,7 @@ public class Gui {
                 } else {
                     hotel.addReservationToFirstRoom(reserv);
                     JOptionPane.showMessageDialog(null, hotel.getGUIString(), "RESULT", JOptionPane.INFORMATION_MESSAGE);
-                    hotel.reservations.add(reserv);
+                    hotel.setReservations(reserv);
                 }
             }catch(NumberFormatException nf){JOptionPane.showMessageDialog(null, "Incorrect input.Please try again ", "ERROR", JOptionPane.ERROR_MESSAGE);}
         }
@@ -343,7 +345,7 @@ public class Gui {
 
             DefaultTableModel tableModel = new DefaultTableModel(0,3);
 
-            for(Reservation r:hotel.reservations)
+            for(Reservation r:hotel.getReservations())
             {
                Vector row=new Vector();
 

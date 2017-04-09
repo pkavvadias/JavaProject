@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Random;
 import java.text.DecimalFormat;
@@ -14,7 +15,7 @@ public class Main {
         int roomiddecider;
         int roomid;
         Hotel hotel = new Hotel();
-        hotel.HotelName = "Hotel";
+        hotel.setHotelName("Hotel");
         Random random = new Random();
         int userinput;//Will be used for scanner
         //First names taken from wikipedia's list of most common names in Greece
@@ -30,8 +31,7 @@ public class Main {
             Room room1 = new Room();
             room1.setPricePerPerson(20);
             room1.setMaxCapacity(4);
-            //room1.RoomNumber=2;
-            hotel.rooms.add(room1);
+            hotel.addRoom(room1);
 
         }
         //Block for second room
@@ -39,7 +39,7 @@ public class Main {
             Room room2 = new Room();
             room2.setPricePerPerson(15);
             room2.setMaxCapacity(2);
-            hotel.rooms.add(room2);
+            hotel.addRoom(room2);
         }
         //Block for third room
         {
@@ -47,7 +47,7 @@ public class Main {
             room3.setPricePerDay(10);
             room3.setPricePerPerson(5);
             room3.setMaxCapacity(2);
-            hotel.rooms.add(room3);
+            hotel.addRoom(room3);
         }
         //Block for forth room
         {
@@ -56,7 +56,7 @@ public class Main {
             room4.setPricePerDay(15);
             room4.setPricePerPerson(25);
             room4.setMaxCapacity(4);
-            hotel.rooms.add(room4);
+            hotel.addRoom(room4);
         }
         //Block for fifth room
         {
@@ -121,7 +121,7 @@ public class Main {
                 reservation.setNumberOfPeople(random.nextInt(6));
                 hotel.addReservationToFirstRoom(reservation);
 
-                hotel.reservations.add(reservation);
+                hotel.setReservations(reservation);
                 random_cancel=random.nextInt(4);//Gives a random number between 0 and 3
 
                 /**
@@ -134,14 +134,14 @@ public class Main {
 
                 if(random_cancel==2)
                 {
-                    int resget=random.nextInt(hotel.reservations.size());
+                    int resget=random.nextInt(hotel.getReservations().size());
                     try {
                         if (hotel.retrieveReservationFromNumber(resget).getRoom() == null) {
                             resget += 1;
                         }
                     }catch(NullPointerException e){resget+=1;}
                     hotel.cancelReservation(resget);
-                    break;
+
                 }
                 k=1;
             }
@@ -167,42 +167,45 @@ public class Main {
                         k=0;//Controls the while statement
                         break;
                     case 2:
-                        s.nextLine();//Required to clear scanner's buffer
-                        Reservation newres = new Reservation();
-                        System.out.println("Insert name");
-                        clientName = s.nextLine();
-                        System.out.println("Insert arrival day");
-                        arrivalDay = s.nextInt();
-                        System.out.println("Insert days of stay");
-                        daysToStay = s.nextInt();
-                        System.out.println("Insert number of people");
-                        number = s.nextInt();
-                        System.out.println("Press 1 if you want to enter specific room id or press any other number to automatically assign it ");
-                        roomiddecider = s.nextInt();
-                        if (roomiddecider == 1) {
-                            System.out.println("Insert room id");
-                            roomid = s.nextInt();
-                        } else {
-                            roomid = -1;
-                        }
-                        newres.setArrival(arrivalDay);
-                        newres.setDaysOfStay(daysToStay);
-                        newres.setClient(clientName);
-                        newres.setNumberOfPeople(number);
-                        if (roomid != -1) {
-                            hotel.addReservationToRoom(newres, roomid);
-                        } else {
-                            hotel.addReservationToFirstRoom(newres);
-                            hotel.reservations.add(newres);
-                        }
-                        break;
+                        try {
+                            s.nextLine();//Required to clear scanner's buffer
+                            Reservation newres = new Reservation();
+                            System.out.println("Insert name");
+                            clientName = s.nextLine();
+                            System.out.println("Insert arrival day");
+                            arrivalDay = s.nextInt();
+                            System.out.println("Insert days of stay");
+                            daysToStay = s.nextInt();
+                            System.out.println("Insert number of people");
+                            number = s.nextInt();
+                            System.out.println("Press 1 if you want to enter specific room id or press any other number to automatically assign it ");
+                            roomiddecider = s.nextInt();
+                            if (roomiddecider == 1) {
+                                System.out.println("Insert room id");
+                                roomid = s.nextInt();
+                            } else {
+                                roomid = -1;
+                            }
+                            newres.setArrival(arrivalDay);
+                            newres.setDaysOfStay(daysToStay);
+                            newres.setClient(clientName);
+                            newres.setNumberOfPeople(number);
+                            if (roomid != -1) {
+                                hotel.addReservationToRoom(newres, roomid);
+                            } else {
+                                hotel.addReservationToFirstRoom(newres);
+                                hotel.setReservations(newres);
+                            }
+                            break;
+                        } catch(InputMismatchException ims){System.out.println("Incorrect input.Please try again");break;}
+
                     case 3:
                         System.out.println("Insert reservation id to cancel");
                         hotel.cancelReservation(s.nextInt());
                         break;
                     case 4:
                         System.out.print("ID \t Client name \t     Room number \n");
-                            for (Reservation r : hotel.reservations) {
+                            for (Reservation r : hotel.getReservations()) {
                                 //The above if statement is required to avoid exception if no room was available(so reservation not saved)
                                 if(r.getRoom()==null){System.out.print("");}
                                 else {
@@ -217,7 +220,7 @@ public class Main {
                         System.out.print("ID \t Fullness \t Income \t\n");
                         DecimalFormat df = new DecimalFormat();
                         df.setMaximumFractionDigits(2);
-                        for(Room r:hotel.rooms)
+                        for(Room r:hotel.getRoom())
                         {
                             System.out.println(""+r.getRoomNumber()+ " \t " +df.format(r.occupiedPercentage())+ " \t " +hotel.incomeCalculate(r.getRoomNumber())+ " \t ");
 
