@@ -17,7 +17,6 @@ public class Room {
 
     }
 
-    public void setRoomNumber(int i){RoomNumber=i;}
     public int getRoomNumber(){return RoomNumber;}
     public void setMaxCapacity(int i){MaxCapacity=i;}
     public int getMaxCapacity(){return MaxCapacity;}
