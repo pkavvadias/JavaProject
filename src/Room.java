@@ -69,13 +69,14 @@ public class Room {
 
         public boolean cancel ( int ReservationId) {
 
-            for (int j = 0; Availability[j] == Availability[29]; j++) {
-                if (Availability[j].getReservationNumber() == ReservationId)
-                {
-                    if (Availability[j] != null) {
-                        Availability[j] = null;
+            for (int j = 0; j<Availability.length; j++) {
+                try {
+                    if (Availability[j].getReservationNumber() == ReservationId) {
+                        if (Availability[j] != null) {
+                            Availability[j] = null;
+                        }
                     }
-                 }
+                }catch(NullPointerException ex){j=j+1;}
         }
 
         return true;

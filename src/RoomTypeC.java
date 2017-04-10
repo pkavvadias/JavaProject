@@ -17,6 +17,7 @@ public class RoomTypeC extends Room {
             {
 
                 a=false;
+                break;
             }
             else
             {

@@ -11,7 +11,6 @@ import java.util.Vector;
 
 public class Gui {
     private Hotel hotel = new Hotel();
-
     /**
      * ByteArrayOutputStream baos = new ByteArrayOutputStream();
      * PrintStream ps = new PrintStream(baos);
@@ -26,8 +25,7 @@ public class Gui {
     int roomid;
     private int random_cancel;
 
-   // private Random random = new Random();
-    int userinput;//Will be used for scanner
+   // int userinput;//Will be used for scanner
     //First names taken from wikipedia's list of most common names in Greece
     private String firstNames[] = {"George", "Giannis", "Konstantinos", "Kostas", "Dimitris", "Nikos", "Panagiotis", "Vasilis",
             "Christos", "Thanasis", "Michalis", "Maria", "Eleni", "Vasiliki", "Sofia", "Aggeliki", "Dimitra", "Kwstantina"};
@@ -129,9 +127,6 @@ public class Gui {
         hotel.addRoom(room10);
     }
 
-    //private String fullName = firstNames[random.nextInt(firstNames.length)] + " " + lastNames[random.nextInt(lastNames.length)];
-    //private Reservation reservation = new Reservation();
-
 
     public Gui() {
         hotel.setHotelName("Hotel");
@@ -155,7 +150,6 @@ public class Gui {
         //App supports only one month so if if DaysofStay+Arrival>30 a crash will occur
         reservation.setNumberOfPeople(random.nextInt(6));
         hotel.addReservationToFirstRoom(reservation);
-        //hotel.addReservationToRoom(reservation,2);
         hotel.setReservations(reservation);
         random_cancel = random.nextInt(4);//Gives a random number between 0 and 3
         JOptionPane.showMessageDialog(null, hotel.getGUIString(), "RESULTS", JOptionPane.INFORMATION_MESSAGE);

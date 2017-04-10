@@ -72,10 +72,17 @@ public class Hotel {
 
                     r.setRoom(retrieveRoomFromNumber(rnumb));
                     retrieveRoomFromNumber(rnumb).addReservation(r);
+                    if(retrieveRoomFromNumber(rnumb).addReservation(r)==false)
+                    {
+                        System.out.println("Reservation not added.Check room's special requirements");
+                        GUIString="Reservation not added.Check room's special requirements";
+                        break;
+                    }
 
                     System.out.println("Reservation with reservation id " + r.getReservationNumber() + " added successfully to room with id " + rnumb + "");
                     GUIString = "Reservation with reservation id " + r.getReservationNumber() + " added successfully to room with id " + rnumb + "";
                     reservations.add(r);
+                    break;
                 }
 
             }
@@ -95,12 +102,18 @@ public class Hotel {
                 if (roomarray[i].Availability[k] != null) {//Checks if room i is available the reservation dates
                     a = 0;
                 } else {
+                        if(rooms.get(i).addReservation(reserv)==false){
+                           // i=i+1;
+                            break;
+                        }
+                    else {
+                            reserv.setRoom(rooms.get(i));
+                            //reservations.add(reserv);//Adds reservation to reservation list
+                            a = roomarray[i].getRoomNumber();
+                            roomarray[i].addReservation(reserv);//Adds reservation to the room of the array
+                            retrieveRoomFromNumber(roomarray[i].getRoomNumber()).addReservation(reserv);
+                        }
 
-                    reserv.setRoom(rooms.get(i));
-                    //reservations.add(reserv);//Adds reservation to reservation list
-                    a=roomarray[i].getRoomNumber();
-                    roomarray[i].addReservation(reserv);//Adds reservation to the room of the array
-                   retrieveRoomFromNumber(roomarray[i].getRoomNumber()).addReservation(reserv);
 
 
                 }
@@ -137,7 +150,10 @@ public class Hotel {
                     while(itr.hasNext()) {
                         Object r = itr.next();
                         if (r.equals(retrieveReservationFromNumber(reservationid))) {
-                            itr.remove();
+                            try {
+                                retrieveReservationFromNumber(reservationid).getRoom().cancel(reservationid);
+                                itr.remove();
+                            }catch(NullPointerException s){continue;}
                         }
                     }
 

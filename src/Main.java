@@ -186,7 +186,7 @@ public class Main {
                             } else {
                                 roomid = -1;
                             }
-                            newres.setArrival(arrivalDay-1);//Required else worng results
+                            newres.setArrival(arrivalDay-1);//Required else wrong results
                             newres.setDaysOfStay(daysToStay);
                             newres.setClient(clientName);
                             newres.setNumberOfPeople(number);
