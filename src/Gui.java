@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
+import java.text.DecimalFormat;
 import java.util.Random;
 import java.util.Vector;
 
@@ -226,6 +227,7 @@ public class Gui {
         {
             JButton viewRooms = new JButton();
             viewRooms.setText("View rooms");
+            viewRooms.addActionListener(new B5EventHandle());
             //mainPanel.add(viewRooms);
             frame1ContentPane.add(viewRooms);
         }
@@ -373,6 +375,43 @@ public class Gui {
             table.setVisible(true);
             scrollPane.setVisible(true);
     }
+    }
+    private class B5EventHandle implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent rp) {
+            DefaultTableModel model = new DefaultTableModel(0,3);
+            DecimalFormat df = new DecimalFormat();
+            df.setMaximumFractionDigits(2);
+            for(Room r:hotel.getRoom())
+            {
+                Vector roomVector=new Vector();
+                try {
+                    roomVector.add(r.getRoomNumber());
+                    roomVector.add(df.format(r.occupiedPercentage()));
+                    roomVector.add(hotel.incomeCalculate(r.getRoomNumber()));
+                    model.addRow(roomVector);
+                }catch(NullPointerException e){continue;}
+
+            }
+            JFrame frame = new JFrame("ROOMS");
+            JPanel panel = new JPanel();
+            panel.setLayout(new BorderLayout());
+
+            JTable table = new JTable(model);
+            table.getColumnModel().getColumn(0).setHeaderValue("ID");
+            table.getColumnModel().getColumn(1).setHeaderValue("FULLNESS");
+            table.getColumnModel().getColumn(2).setHeaderValue("INCOME");
+            table.getTableHeader().repaint();
+            JScrollPane scrollPane = new JScrollPane(table);
+
+            panel.add(scrollPane);
+            frame.getContentPane().add(panel);
+
+            frame.pack();
+            frame.setVisible(true);
+            table.setVisible(true);
+            scrollPane.setVisible(true);
+        }
     }
     private class B6EventHandle implements ActionListener{
         @Override
