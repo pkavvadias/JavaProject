@@ -12,21 +12,8 @@ import java.util.Vector;
 
 public class Gui {
     private Hotel hotel = new Hotel();
-    /**
-     * ByteArrayOutputStream baos = new ByteArrayOutputStream();
-     * PrintStream ps = new PrintStream(baos);
-     * <p>
-     * PrintStream old = System.out;
-     */
-    String clientName;
-    int number;
-    int arrivalDay;
-    int daysToStay;
-    int roomiddecider;
-    int roomid;
     private int random_cancel;
 
-   // int userinput;//Will be used for scanner
     //First names taken from wikipedia's list of most common names in Greece
     private String firstNames[] = {"George", "Giannis", "Konstantinos", "Kostas", "Dimitris", "Nikos", "Panagiotis", "Vasilis",
             "Christos", "Thanasis", "Michalis", "Maria", "Eleni", "Vasiliki", "Sofia", "Aggeliki", "Dimitra", "Kwstantina"};
@@ -182,34 +169,20 @@ public class Gui {
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("HOTEL MANAGEMENT");
-        //frame.setSize(500,250);
-        //frame.setResizable(true);
-        //frame.setLayout(new BoxLayout(frame,BoxLayout.PAGE_AXIS));
-        //frame.setLocationRelativeTo(null);//Set location to center
         Container frame1ContentPane = frame.getContentPane();
         frame1ContentPane.setLayout(new GridLayout(8, 1));
-        //mainPanel=new JPanel();
-        //mainPanel.setSize(500,250);
-        // mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
-
-        //mainPanel.setVisible(true);
         {
             JButton randomaction = new JButton();
 
             randomaction.setText("Next repeat(Program continues)");
-            //mainPanel.add(randomaction);
             randomaction.addActionListener(new B1EventHandle());
             frame1ContentPane.add(randomaction);
-            //randomaction.setVisible(true);
         }
         {
             JButton addAReservation = new JButton();
             addAReservation.setText("Add a reservation");
             addAReservation.addActionListener(new B2EventHandle());
-            // mainPanel.add(addAReservation);
             frame1ContentPane.add(addAReservation);
-            //double test=Double.parseDouble((JOptionPane.showInputDialog("Test")));
-            //addAReservation.addActionListener(b);
         }
         {
             JButton cancelAReservation = new JButton();
@@ -220,7 +193,6 @@ public class Gui {
         {
             JButton viewReservations = new JButton();
             viewReservations.setText("View reservations");
-            //mainPanel.add(viewReservations);
             viewReservations.addActionListener(new B4EventHandle());
             frame1ContentPane.add(viewReservations);
         }
@@ -228,7 +200,6 @@ public class Gui {
             JButton viewRooms = new JButton();
             viewRooms.setText("View rooms");
             viewRooms.addActionListener(new B5EventHandle());
-            //mainPanel.add(viewRooms);
             frame1ContentPane.add(viewRooms);
         }
         {
@@ -248,21 +219,11 @@ public class Gui {
             JButton exit = new JButton();
             exit.setText("Exit");
             exit.addActionListener(new B8EventHandle());
-            //mainPanel.add(exit);
             frame1ContentPane.add(exit);
         }
-        //frame.pack();
         frame.setSize(540, 430);
-
-        //SwingUtilities.updateComponentTreeUI(frame);
-        //frame.getContentPane().add(mainPanel);
-
-        //frame1ContentPane.setLayout(new GridLayout(7, 1));
-        //frame.pack();
         frame.setVisible(true);
         System.out.flush();
-        //System.setOut(old);
-
     }
 
 
@@ -278,7 +239,6 @@ public class Gui {
             //App supports only one month so if if DaysofStay+Arrival>30 a crash will occur
             res.setNumberOfPeople(random.nextInt(6));
             hotel.addReservationToFirstRoom(res);
-            //hotel.addReservationToRoom(reservation,2);
             hotel.setReservations(res);
             JOptionPane.showMessageDialog(null, hotel.getGUIString(), "RESULTS", JOptionPane.INFORMATION_MESSAGE);
 
