@@ -28,5 +28,9 @@ public class RoomTypeB extends RoomTypeA {
         }
     }
     return cost;
-}
+    }
+    @Override
+    public boolean cancel ( int ReservationId) {
+        return false;
+    }
 }
