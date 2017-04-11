@@ -3,8 +3,8 @@ The aim is to create a hotel management app
 A GUI using the beloved Swing library is also available
 IDE used is JetBrains IntelliJ IDEA.Fuck BlueJ(A wanna be IDE for educational purposes proposed by the uni)
 
-If you want to run it in GUI environment(still incomplete) use GUIMain class as main
-If you prefer command line environment(100% functional) use Main class as main
+If you want to run it in GUI environment use GUIMain class as main
+If you prefer command line environment use Main class as main
 
 Feel free to fork
 
