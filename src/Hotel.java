@@ -42,6 +42,7 @@ public class Hotel {
             if (reservarray[i].getReservationNumber() == resid) {
                 restoappear[i]=reservarray[i];
                 k=i;
+                break;
 
             } else{
                 restoappear[0]=null;
@@ -160,25 +161,25 @@ public class Hotel {
                 Iterator itr=reservations.iterator();
 
                 //Iterators are safer to use
-                    while(itr.hasNext()) {
-                        Object r = itr.next();
-                        if (r.equals(retrieveReservationFromNumber(reservationid))) {
-                            try {
-                                retrieveReservationFromNumber(reservationid).getRoom().cancel(reservationid);
-                                itr.remove();
-                            }catch(NullPointerException s){continue;}
-                        }
+                while(itr.hasNext()) {
+                    Object r = itr.next();
+                    if (r.equals(retrieveReservationFromNumber(reservationid))) {
+                        try {
+                            retrieveReservationFromNumber(reservationid).getRoom().cancel(reservationid);
+                            itr.remove();
+                        }catch(NullPointerException s){continue;}
                     }
+                }
 
                 System.out.println("Reservation with reservation id " + reservationid + " was cancelled");
-                    GUIString="Reservation with reservation id " + reservationid + " was cancelled";
+                GUIString="Reservation with reservation id " + reservationid + " was cancelled";
             } else {
                 System.out.println("Reservation with reservation id " + reservationid + " was not cancelled");
                 GUIString="Reservation with reservation id " + reservationid + " was not cancelled";
             }
         }catch(ArrayIndexOutOfBoundsException e)
         {System.out.println("Reservation with reservation id " + reservationid + " was not cancelled");
-        GUIString="Reservation with reservation id " + reservationid + " was not cancelled";
+            GUIString="Reservation with reservation id " + reservationid + " was not cancelled";
         }
     }
     public double incomeCalculate(int roomnumb)

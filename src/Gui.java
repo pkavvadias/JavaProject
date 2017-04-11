@@ -153,7 +153,7 @@ public class Gui {
          */
         if (random_cancel == 2) {
             int resget = random.nextInt(hotel.getReservations().size());
-            try {
+           try {
                 if (hotel.retrieveReservationFromNumber(resget).getRoom() == null) {
                     resget += 1;
                 }

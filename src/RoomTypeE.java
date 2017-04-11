@@ -23,7 +23,7 @@ public class RoomTypeE extends Room {
                             Availability[j] = null;
                         }
                     }
-                }catch(NullPointerException ex){j=j+1;}
+                }catch(NullPointerException ex){continue;}
             }
             return true;
         }
