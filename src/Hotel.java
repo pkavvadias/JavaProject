@@ -73,7 +73,11 @@ public class Hotel {
                     r.setRoom(retrieveRoomFromNumber(rnumb));
                     retrieveRoomFromNumber(rnumb).addReservation(r);
                     if(retrieveRoomFromNumber(rnumb).addReservation(r)==false)
-                    {
+                    {/**
+                        try {
+                            r.getRoom().cancel(r.getReservationNumber());
+                        }catch(NullPointerException abc){}
+                     */
                         System.out.println("Reservation not added.Check room's special requirements");
                         GUIString="Reservation not added.Check room's special requirements";
                         break;
@@ -83,9 +87,9 @@ public class Hotel {
                     GUIString = "Reservation with reservation id " + r.getReservationNumber() + " added successfully to room with id " + rnumb + "";
                     reservations.add(r);
                     break;
-                }
+               }
 
-            }
+           }
 
         }
         return a;
@@ -97,16 +101,23 @@ public class Hotel {
         for (int i = 0; i<roomarray.length; i++) {
             for (int k = reserv.getArrival(); k < (reserv.getArrival()+reserv.getDaysOfStay()); k++) {
 
-
-                if (roomarray[i].Availability[k] != null) {//Checks if room i is available the reservation dates
-                    a = 0;
-                } else {
-                        if(rooms.get(i).addReservation(reserv)==false){
-                            if(i<roomarray.length+1){i=i+1;}
-                            else{a=0;}
+                try {
+                    if (roomarray[i].Availability[k] != null) {//Checks if room i is available the reservation dates
+                        a = 0;
+                    } else {
+                        if (rooms.get(i).addReservation(reserv) == false) {
+                            /**
+                            try {
+                                reserv.getRoom().cancel(reserv.getReservationNumber());
+                            }catch(NullPointerException ab){}//Test
+                             */
+                            if (i < roomarray.length + 1) {
+                                i = i + 1;
+                            } else {
+                                a = 0;
+                            }
                             break;
-                        }
-                    else {
+                        } else {
                             reserv.setRoom(rooms.get(i));
                             a = roomarray[i].getRoomNumber();
                             roomarray[i].addReservation(reserv);//Adds reservation to the room of the array
@@ -114,10 +125,12 @@ public class Hotel {
                         }
 
 
-
+                    }
+                }catch(ArrayIndexOutOfBoundsException aout){a=0;}//If arrival day/daysofstay>30
+                    if (a != 0) {
+                        break;
+                    }//Loop needs to stop when an available room is found
                 }
-                if(a!=0){break;}//Loop needs to stop when an available room is found
-            }
             if(a!=0){break;}//Loop needs to stop when an available room is found
         }
         if(a==0)
@@ -141,8 +154,9 @@ public class Hotel {
         try {
             if (retrieveReservationFromNumber(reservationid) != null)
 
-            {
-
+            {try {
+                retrieveReservationFromNumber(reservationid).getRoom().cancel(reservationid);
+            }catch(NullPointerException np){}
                 Iterator itr=reservations.iterator();
 
                 //Iterators are safer to use

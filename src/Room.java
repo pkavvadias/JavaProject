@@ -32,6 +32,7 @@ public class Room {
             {
 
                 a=false;
+                break;
             }
             else
             {
@@ -39,6 +40,7 @@ public class Room {
                 Availability[i].setReservationNumber(res.getReservationNumber());
                res.setRoom(this);
                 a=true;
+                break;
             }
 
         }

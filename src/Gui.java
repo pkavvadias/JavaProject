@@ -291,11 +291,14 @@ public class Gui {
     }
     private class B3EventHandle implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent cr){
-            try {
+        public void actionPerformed(ActionEvent cr) {
+           try {
                 int idToCancel = Integer.parseInt((JOptionPane.showInputDialog(null, "Insert ID of reservation you want to cancel", "ID TO CANCEL", JOptionPane.QUESTION_MESSAGE)));
                 hotel.cancelReservation(idToCancel);
-            }catch(NumberFormatException nf){JOptionPane.showMessageDialog(null, "Incorrect input.Please try again ", "ERROR", JOptionPane.ERROR_MESSAGE);}
+           } catch (NumberFormatException nf) {
+               JOptionPane.showMessageDialog(null, "Incorrect input.Please try again ", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+            JOptionPane.showMessageDialog(null, hotel.getGUIString(), "RESULT", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -428,8 +431,12 @@ public class Gui {
             if (answer == JOptionPane.YES_OPTION) {
                 try {
                     roomind = Integer.parseInt((JOptionPane.showInputDialog(null, "Insert room ID", "ID TO SHOW INCOME", JOptionPane.QUESTION_MESSAGE)));
-                }catch(NumberFormatException nf){JOptionPane.showMessageDialog(null, "Incorrect input.Please try again ", "ERROR", JOptionPane.ERROR_MESSAGE);}
-                JOptionPane.showMessageDialog(null,"Income is " +hotel.incomeCalculate(roomind)+ " euros", "INCOME", JOptionPane.INFORMATION_MESSAGE);
+                } catch (NumberFormatException nf) {
+                    JOptionPane.showMessageDialog(null, "Incorrect input.Please try again ", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+                try {
+                    JOptionPane.showMessageDialog(null, "Income is " + hotel.incomeCalculate(roomind) + " euros", "INCOME", JOptionPane.INFORMATION_MESSAGE);
+                }catch(NullPointerException exc){JOptionPane.showMessageDialog(null, "Room not found.Please try again ", "ERROR", JOptionPane.ERROR_MESSAGE);}
             }
             else{
                 JOptionPane.showMessageDialog(null,"Income is " +hotel.incomeCalculate()+ " euros", "INCOME", JOptionPane.INFORMATION_MESSAGE);
