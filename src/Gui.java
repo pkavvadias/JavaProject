@@ -142,7 +142,7 @@ public class Gui {
         random_cancel = random.nextInt(4);//Gives a random number between 0 and 3
         JOptionPane.showMessageDialog(null, hotel.getGUIString(), "RESULTS", JOptionPane.INFORMATION_MESSAGE);
 
-        random_cancel = random.nextInt(4);//Gives a random number between 0 and 3
+        random_cancel = random.nextInt(3);//Gives a random number between 0 and 3
         /**
          * The try-catch block and the two if statements in the next while loop is a workaround
          * Because of static method atomic integer in reservation class each reservation gets a unique id
@@ -291,10 +291,7 @@ public class Gui {
     }
 
     private class B4EventHandle implements ActionListener {
-        int d1;
-        String d2;
-        int d3;
-        Object[] row = {d1, d2, d3};
+
 
 
         @Override

@@ -122,7 +122,7 @@ public class Main {
                 hotel.addReservationToFirstRoom(reservation);
 
                 hotel.setReservations(reservation);
-                random_cancel=random.nextInt(4);//Gives a random number between 0 and 3
+                random_cancel=random.nextInt(3);//Gives a random number between 0 and 3
 
                 /**
                  * The try-catch block and the two if statements in the next while loop is a workaround
