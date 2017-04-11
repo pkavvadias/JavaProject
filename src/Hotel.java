@@ -93,7 +93,6 @@ public class Hotel {
 
     public int addReservationToFirstRoom(Reservation reserv) {
         int a=0;
-        //Room roomtoadd;
         Room[] roomarray = rooms.toArray(new Room[rooms.size()]);
         for (int i = 0; i<roomarray.length; i++) {
             for (int k = reserv.getArrival(); k < (reserv.getArrival()+reserv.getDaysOfStay()); k++) {
@@ -109,7 +108,6 @@ public class Hotel {
                         }
                     else {
                             reserv.setRoom(rooms.get(i));
-                            //reservations.add(reserv);//Adds reservation to reservation list
                             a = roomarray[i].getRoomNumber();
                             roomarray[i].addReservation(reserv);//Adds reservation to the room of the array
                             retrieveRoomFromNumber(roomarray[i].getRoomNumber()).addReservation(reserv);
