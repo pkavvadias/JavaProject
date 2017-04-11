@@ -116,7 +116,7 @@ public class Main {
                 Reservation reservation = new Reservation();
                 reservation.setClient(fullName);
                 reservation.setArrival(random.nextInt(30));//Sets random values
-                reservation.setDaysOfStay(random.nextInt((30 - reservation.getArrival())));
+                reservation.setDaysOfStay(random.nextInt((31 - reservation.getArrival())));
                 //App supports only one month so if if DaysofStay+Arrival>30 a crash will occur
                 reservation.setNumberOfPeople(random.nextInt(6));
                 hotel.addReservationToFirstRoom(reservation);

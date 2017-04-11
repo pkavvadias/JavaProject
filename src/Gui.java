@@ -135,7 +135,7 @@ public class Gui {
         Reservation reservation = new Reservation();
         reservation.setClient(fullName);
         reservation.setArrival(random.nextInt(30));//Sets random values
-        reservation.setDaysOfStay(random.nextInt((30 - reservation.getArrival())));
+        reservation.setDaysOfStay(random.nextInt((31 - reservation.getArrival())));
         //App supports only one month so if if DaysofStay+Arrival>30 a crash will occur
         reservation.setNumberOfPeople(random.nextInt(6));
         hotel.addReservationToFirstRoom(reservation);
@@ -235,7 +235,7 @@ public class Gui {
             Reservation res = new Reservation();
             res.setClient(fullName);
             res.setArrival(random.nextInt(30));//Sets random values
-            res.setDaysOfStay(random.nextInt((30 - res.getArrival())));
+            res.setDaysOfStay(random.nextInt((31 - res.getArrival())));
             //App supports only one month so if if DaysofStay+Arrival>30 a crash will occur
             res.setNumberOfPeople(random.nextInt(6));
             hotel.addReservationToFirstRoom(res);
