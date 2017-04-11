@@ -13,6 +13,7 @@ import java.util.Vector;
 public class Gui {
     private Hotel hotel = new Hotel();
     private int random_cancel;
+    private int roomind;
 
     //First names taken from wikipedia's list of most common names in Greece
     private String firstNames[] = {"George", "Giannis", "Konstantinos", "Kostas", "Dimitris", "Nikos", "Panagiotis", "Vasilis",
@@ -187,7 +188,7 @@ public class Gui {
         {
             JButton cancelAReservation = new JButton();
             cancelAReservation.setText("Cancel a reservation");
-            //mainPanel.add(cancelAReservation);
+            cancelAReservation.addActionListener(new B3EventHandle());
             frame1ContentPane.add(cancelAReservation);
         }
         {
@@ -206,13 +207,12 @@ public class Gui {
             JButton viewReservationPlan = new JButton();
             viewReservationPlan.setText("View reservation plan");
             viewReservationPlan.addActionListener(new B6EventHandle());
-            //mainPanel.add(viewReservations);
             frame1ContentPane.add(viewReservationPlan);
         }
         {
             JButton viewIncome = new JButton();
             viewIncome.setText("View income");
-            //mainPanel.add(viewIncome);
+            viewIncome.addActionListener(new B7EventHandle());
             frame1ContentPane.add(viewIncome);
         }
         {
@@ -288,6 +288,15 @@ public class Gui {
         }
 
 
+    }
+    private class B3EventHandle implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent cr){
+            try {
+                int idToCancel = Integer.parseInt((JOptionPane.showInputDialog(null, "Insert ID of reservation you want to cancel", "ID TO CANCEL", JOptionPane.QUESTION_MESSAGE)));
+                hotel.cancelReservation(idToCancel);
+            }catch(NumberFormatException nf){JOptionPane.showMessageDialog(null, "Incorrect input.Please try again ", "ERROR", JOptionPane.ERROR_MESSAGE);}
+        }
     }
 
     private class B4EventHandle implements ActionListener {
@@ -410,6 +419,21 @@ public class Gui {
             frames.setVisible(true);
             table.setVisible(true);
             scrollPane.setVisible(true);
+        }
+    }
+    private class B7EventHandle implements ActionListener {
+        public void actionPerformed(ActionEvent inc) {
+
+            int answer = JOptionPane.showConfirmDialog(null, "Do you want to show income of specific room?", "SPECIFIC ROOM ID", JOptionPane.YES_NO_CANCEL_OPTION);
+            if (answer == JOptionPane.YES_OPTION) {
+                try {
+                    roomind = Integer.parseInt((JOptionPane.showInputDialog(null, "Insert room ID", "ID TO SHOW INCOME", JOptionPane.QUESTION_MESSAGE)));
+                }catch(NumberFormatException nf){JOptionPane.showMessageDialog(null, "Incorrect input.Please try again ", "ERROR", JOptionPane.ERROR_MESSAGE);}
+                JOptionPane.showMessageDialog(null,"Income is " +hotel.incomeCalculate(roomind)+ " euros", "INCOME", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"Income is " +hotel.incomeCalculate()+ " euros", "INCOME", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
     }
     private class B8EventHandle implements ActionListener{

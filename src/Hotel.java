@@ -103,7 +103,8 @@ public class Hotel {
                     a = 0;
                 } else {
                         if(rooms.get(i).addReservation(reserv)==false){
-                           // i=i+1;
+                            if(i<roomarray.length+1){i=i+1;}
+                            else{a=0;}
                             break;
                         }
                     else {

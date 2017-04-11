@@ -201,7 +201,9 @@ public class Main {
 
                     case 3:
                         System.out.println("Insert reservation id to cancel");
-                        hotel.cancelReservation(s.nextInt());
+                        try {
+                            hotel.cancelReservation(s.nextInt());
+                        }catch(java.util.InputMismatchException im){System.out.println("Wrong input.Please try again");break;}
                         break;
                     case 4:
                         System.out.print("ID \t Client name \t     Room number \n");
