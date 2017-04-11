@@ -73,13 +73,13 @@ public class Hotel {
                     r.setRoom(retrieveRoomFromNumber(rnumb));
                     retrieveRoomFromNumber(rnumb).addReservation(r);
                     if(retrieveRoomFromNumber(rnumb).addReservation(r)==false)
-                    {/**
-                        try {
+                    {
+                       try  {
                             r.getRoom().cancel(r.getReservationNumber());
                         }catch(NullPointerException abc){}
-                     */
-                        System.out.println("Reservation not added.Check room's special requirements");
-                        GUIString="Reservation not added.Check room's special requirements";
+
+                        System.out.println("Reservation not added.Check room's requirements");
+                        GUIString="Reservation not added.Check room's requirements";
                         break;
                     }
 
@@ -104,13 +104,13 @@ public class Hotel {
                 try {
                     if (roomarray[i].Availability[k] != null) {//Checks if room i is available the reservation dates
                         a = 0;
-                    } else {
+                    }else {
                         if (rooms.get(i).addReservation(reserv) == false) {
-                            /**
+
                             try {
                                 reserv.getRoom().cancel(reserv.getReservationNumber());
-                            }catch(NullPointerException ab){}//Test
-                             */
+                            }catch(NullPointerException ab){}//We don't need any message
+
                             if (i < roomarray.length + 1) {
                                 i = i + 1;
                             } else {
@@ -126,7 +126,7 @@ public class Hotel {
 
 
                     }
-                }catch(ArrayIndexOutOfBoundsException aout){a=0;}//If arrival day/daysofstay>30
+               }catch(ArrayIndexOutOfBoundsException aout){a=0;}//If arrival day/daysofstay>30
                     if (a != 0) {
                         break;
                     }//Loop needs to stop when an available room is found
@@ -156,7 +156,7 @@ public class Hotel {
 
             {try {
                 retrieveReservationFromNumber(reservationid).getRoom().cancel(reservationid);
-            }catch(NullPointerException np){}
+            }catch(NullPointerException np){}//We don't need any message
                 Iterator itr=reservations.iterator();
 
                 //Iterators are safer to use

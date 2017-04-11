@@ -13,18 +13,17 @@ public class RoomTypeC extends Room {
         boolean a=true;
         for(int i=res.getArrival();i<(res.getArrival()+ res.getDaysOfStay());i++)
         {
-            if(Availability[i]!=null ||res.getNumberOfPeople()>getMaxCapacity()||res.getDaysOfStay()<MinimumDays||res.getNumberOfPeople()<MinimumPeople)
+            if(Availability[i]==null &&res.getNumberOfPeople()<=getMaxCapacity()&&res.getDaysOfStay()>=MinimumDays&&res.getNumberOfPeople()>=MinimumPeople)
             {
 
-                a=false;
-                break;
-            }
-            else
-            {
                 Availability[i]=res;
                 Availability[i].setReservationNumber(res.getReservationNumber());
                 res.setRoom(this);
                 a=true;
+            }
+            else
+            {
+                a=false;
             }
 
         }

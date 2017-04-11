@@ -28,19 +28,18 @@ public class Room {
        boolean a=true;
        for(int i=res.getArrival();i<(res.getArrival()+ res.getDaysOfStay());i++)
         {
-            if(Availability[i]!=null ||res.getNumberOfPeople()>MaxCapacity)
-            {
-
-                a=false;
-                break;
-            }
-            else
+            if(Availability[i] ==null &res.getNumberOfPeople()<=MaxCapacity)
             {
                 Availability[i]=res;
                 Availability[i].setReservationNumber(res.getReservationNumber());
-               res.setRoom(this);
+                res.setRoom(this);
                 a=true;
                 break;
+
+            }
+            else
+            {
+                a=false;
             }
 
         }
