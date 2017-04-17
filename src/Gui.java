@@ -28,7 +28,6 @@ public class Gui {
         Room room1 = new Room();
         room1.setPricePerPerson(20);
         room1.setMaxCapacity(4);
-        //room1.RoomNumber=2;
         hotel.addRoom(room1);
 
     }
