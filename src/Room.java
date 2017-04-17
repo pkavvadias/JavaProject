@@ -23,25 +23,17 @@ public class Room {
     public void setPricePerPerson(double i){PricePerPerson=i;}
     public double getPricePerPerson(){return PricePerPerson;}
 
-    public boolean addReservation(Reservation res)
-   {
-       boolean a=true;
-       for(int i=res.getArrival();i<(res.getArrival()+ res.getDaysOfStay());i++)
-        {
-            if(Availability[i] ==null &res.getNumberOfPeople()<=MaxCapacity)
-            {
-                Availability[i]=res;
+    public boolean addReservation(Reservation res) {
+        boolean a = true;
+        for (int i = res.getArrival(); i < (res.getArrival() + res.getDaysOfStay()); i++) {
+            if (Availability[i] == null && res.getNumberOfPeople() <= MaxCapacity) {
+                Availability[i] = res;
                 Availability[i].setReservationNumber(res.getReservationNumber());
                 res.setRoom(this);
-                a=true;
-                break;
-
+                a = true;
+            } else {
+                a = false;
             }
-            else
-            {
-                a=false;
-            }
-
         }
         return a;
     }
