@@ -72,7 +72,7 @@ public class Hotel {
                 } else {
 
                     r.setRoom(retrieveRoomFromNumber(rnumb));
-                    
+
                     if(retrieveRoomFromNumber(rnumb).addReservation(r)==false)
                     {
                        try  {
