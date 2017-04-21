@@ -54,7 +54,6 @@ public class Hotel {
     }
     public boolean addReservationToRoom(Reservation r,int rnumb) {
         boolean a = true;
-
         if (retrieveRoomFromNumber(rnumb) == null) {
 
             System.out.println("Room not found so reservation was not added");
@@ -70,20 +69,17 @@ public class Hotel {
                     a = false;
                     break;
                 } else {
-
                     r.setRoom(retrieveRoomFromNumber(rnumb));
-
                     if(retrieveRoomFromNumber(rnumb).addReservation(r)==false)
                     {
-                       try  {
-                            r.getRoom().cancel(r.getReservationNumber());
-                        }catch(NullPointerException abc){}
+                        try  {
+                           r.getRoom().cancel(r.getReservationNumber());
+                       }catch(NullPointerException abc){}
 
                         System.out.println("Reservation not added.Check room's requirements");
                         GUIString="Reservation not added.Check room's requirements";
                         break;
                     }
-
                     System.out.println("Reservation with reservation id " + r.getReservationNumber() + " added successfully to room with id " + rnumb + "");
                     GUIString = "Reservation with reservation id " + r.getReservationNumber() + " added successfully to room with id " + rnumb + "";
                     reservations.add(r);

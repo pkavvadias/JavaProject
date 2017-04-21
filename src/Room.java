@@ -84,10 +84,8 @@ public class Room {
         for(int i=0;i<Availability.length;i++)
         {
 
-            if(Availability[i]==null)
+            if(Availability[i]!=null)
             {
-                i+=1;}
-            else{
                     counter++;
 
                 }

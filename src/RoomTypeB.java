@@ -1,7 +1,6 @@
 
 public class RoomTypeB extends RoomTypeA {
     private int DiscountPerDay;
-    private double FinalPricePerDay=getPricePerDay();
     private double cost=0;
 
     public void setDiscountPerDay(int i){DiscountPerDay=i;}
@@ -11,24 +10,27 @@ public class RoomTypeB extends RoomTypeA {
     @Override
     public double costCalculate()
     {
-    for(int i=0;i<30;i++)
+        double minimumPrice = getPricePerDay() / 2;
+        double finalPricePerDay;
+        int dayCounter=0;
+        for(Reservation r : Availability)
     {
-        if(Availability[i]==null)
-        {
-
-            cost +=0;
-        }
+        if(r==null)
+        {continue;}
         else
-        {
-            cost+=FinalPricePerDay;
-                if(FinalPricePerDay>=(0.5*getPricePerDay()))
-                {
-                    FinalPricePerDay=(FinalPricePerDay-DiscountPerDay);
-                }
-        }
+        {dayCounter++;}
+        double priceReduction = dayCounter * DiscountPerDay;
+        double dayPrice = getPricePerDay() - priceReduction;
+        if(dayPrice<minimumPrice){
+            finalPricePerDay =minimumPrice;}
+        else{
+            finalPricePerDay =dayPrice;}
+        cost+= finalPricePerDay;
+
     }
     return cost;
     }
+
     @Override
     public boolean cancel ( int ReservationId) {
         return false;
