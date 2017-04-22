@@ -8,27 +8,61 @@ public class RoomTypeB extends RoomTypeA {
 
 
     @Override
-    public double costCalculate()
-    {
-        double minimumPrice = getPricePerDay() / 2;
+    public double costCalculate(){
+        double cost=0;
         double finalPricePerDay;
+        Reservation previous=null;
         int dayCounter=0;
-        for(Reservation r : Availability)
-    {
-        if(r==null)
-        {continue;}
-        else
-        {dayCounter++;}
-        double priceReduction = dayCounter * DiscountPerDay;
-        double dayPrice = getPricePerDay() - priceReduction;
-        if(dayPrice<minimumPrice){
-            finalPricePerDay =minimumPrice;}
-        else{
-            finalPricePerDay =dayPrice;}
-        cost+= finalPricePerDay;
-
-    }
-    return cost;
+        int i;
+        for (Reservation r: Availability){
+            if (r==null && previous==null){
+                //no reservations
+                continue;
+            }
+            else if (r!=null && previous==null){
+                //new reservation after room being unreserved for day(s)
+                dayCounter=1;
+                //(we could have just incremented it, but we chose to assign 1 directly to be sure)
+                previous=r;
+                continue;
+            }
+            else if (r!=null && previous!=null && previous!=r){
+                //new reservation immediately after the end of the previous reservation
+                finalPricePerDay=getPricePerDay();
+                for (i=0; i<dayCounter; i++){
+                    cost+=finalPricePerDay;
+                    System.out.println(cost);
+                    if (finalPricePerDay-DiscountPerDay>=(getPricePerDay()/2)){
+                        finalPricePerDay-=DiscountPerDay;
+                    }
+                }
+                dayCounter=1;
+                //(this is the first day of the new reservation)
+                previous=r;
+                continue;
+            }
+            else if (r==null && previous!=null){
+                //end of a reservation followed by unreserved day(s)
+                finalPricePerDay=getPricePerDay();
+                for (i=0; i<dayCounter; i++){
+                    cost+=finalPricePerDay;
+                    System.out.println(cost);
+                    if (finalPricePerDay-DiscountPerDay>=(getPricePerDay()/2)){
+                        finalPricePerDay-=DiscountPerDay;
+                    }
+                }
+                dayCounter=0;
+                previous=r;
+                continue;
+            }
+            else if (r!=null && r==previous){
+                //reservation continues
+                dayCounter++;
+                previous=r;
+                continue;
+            }
+        }
+        return cost;
     }
 
     @Override

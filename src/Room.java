@@ -40,18 +40,11 @@ public class Room {
     public double costCalculate()
     {
         double cost=0;
-        for(int i=0;i<30;i++)
+        for(Reservation r: Availability)
         {
-        if(Availability[i]==null)
-        {
-
-            cost +=0;
-        }
-        else
-        {
-            cost+=(Availability[i].getNumberOfPeople()*PricePerPerson);
-
-        }
+            if(r!=null){
+                cost+=(r.getNumberOfPeople()*PricePerPerson);
+            }
         }
         return cost;
     }

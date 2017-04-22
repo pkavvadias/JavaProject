@@ -6,22 +6,16 @@ public class RoomTypeA extends Room{
     public double getPricePerDay(){return PricePerDay;}
     @Override
     public double costCalculate()
-{
-double cost=0;
-    for(int i=0;i<30;i++)
     {
-        if(Availability[i]==null)
+        double cost=0;
+        for(Reservation r: Availability)
         {
-
-            cost +=0;
+            if(r!=null)
+            {
+                cost+=PricePerDay;
+            }
         }
-        else
-        {
-            cost+=PricePerDay;
-
-        }
+        return cost;
     }
-    return cost;
-}
 }
 

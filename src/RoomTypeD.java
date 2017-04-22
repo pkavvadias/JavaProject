@@ -8,16 +8,11 @@ public class RoomTypeD extends Room {
     public double costCalculate()
     {
         double cost=0;
-        for(int i=0;i<30;i++)
+        for(Reservation r: Availability)
         {
-            if(Availability[i]==null)
+            if(r!=null)
             {
-
-                cost +=0;
-            }
-            else
-            {
-                    cost+=((Availability[i].getNumberOfPeople()-numberOfChildrenBeds)*getPricePerPerson())+(numberOfChildrenBeds)*(0.5*getPricePerPerson());
+                cost+=((r.getNumberOfPeople()-numberOfChildrenBeds)*getPricePerPerson())+(numberOfChildrenBeds)*(0.5*getPricePerPerson());
             }
         }
         return cost;
